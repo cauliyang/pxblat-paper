@@ -94,10 +94,36 @@
 	\linenumbers
 \fi
 
+
+\RequirePackage{csquotes}
+%% bibliography
+\RequirePackage{chapterbib} % outside of Overleaf, comment this line
+\RequirePackage[sectionbib,authoryear,round]{natbib}
+\setlength{\bibsep}{0.0pt}
+\bibliographystyle{bxv_abbrvnat}
+\renewcommand{\bibsection}{} % Remove header
+
+\if@submit
+	\renewcommand\bibfont{\normalfont\sffamily\fontsize{9}{10}\selectfont} % set font to be sans serif
+\else
+	\renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
+\fi
+
+
 \PassOptionsToPackage{hyphens}{url}
 %% Hyperlinking
 \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
 \RequirePackage{orcidlink}
+
+% \renewcommand\backreftwosep{, }
+% \renewcommand\backrefsep{, }
+% \renewcommand*{\backrefalt}[4]{%
+% 	\ifcase #1%
+% 	\or (see page:~#2)%
+% 	\else (see pages:~#2)%
+% 	\fi%
+% }
+
 
 %% Ref to Sup
 \RequirePackage{nameref}
@@ -305,17 +331,17 @@
 \def\markboth#1#2{\def\leftmark{#1}\def\rightmark{#2}}
 \def\footernote#1{\markboth{#1}{#1}}
 
-%% bibliography
-\RequirePackage{chapterbib} % outside of Overleaf, comment this line
-\RequirePackage[sectionbib,authoryear,round]{natbib}
-\setlength{\bibsep}{0.0pt}
-\bibliographystyle{bxv_abbrvnat}
-\renewcommand{\bibsection}{} % Remove header
-\if@submit
-	\renewcommand\bibfont{\normalfont\sffamily\fontsize{9}{10}\selectfont} % set font to be sans serif
-\else
-	\renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
-\fi
+% %% bibliography
+% \RequirePackage{chapterbib} % outside of Overleaf, comment this line
+% \RequirePackage[sectionbib,authoryear,round]{natbib}
+% \setlength{\bibsep}{0.0pt}
+% \bibliographystyle{bxv_abbrvnat}
+% \renewcommand{\bibsection}{} % Remove header
+% \if@submit
+% 	\renewcommand\bibfont{\normalfont\sffamily\fontsize{9}{10}\selectfont} % set font to be sans serif
+% \else
+% 	\renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
+% \fi
 
 \makeatletter
 \renewcommand\@biblabel[1]{ #1.} % Remove brackets from label
@@ -460,8 +486,8 @@
 \DeclareGraphicsRule{*}{eps}{*}{}
 
 %% add custom package
-
 \RequirePackage[acronym, style=index, shortcuts]{glossaries}
+\RequirePackage{booktabs}
 
 
 %% Page headers and footers
@@ -529,6 +555,230 @@
 
 \parindent=0pt
 \endinput
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
