@@ -1,7 +1,7 @@
 \leadauthor{Yangyang Li}
 
-\title{Pxblat: An Efficient and Ergonomics Python Binding Library for BLAT}
-\shorttitle{Pxblat}
+\title{PxBLAT: An Efficient and Ergonomics Python Binding Library for BLAT}
+\shorttitle{Ergonomic Genomic Analysis with PxBLAT}
 
 \author[1]{Yangyang Li\orcidlink{0000-0001-8224-1067}}
 % \author[2]{Second Doctor \orcidlink {000-0002-0000-0000}}
@@ -18,26 +18,82 @@
 
 
 \begin{keywords}
-	Software libraries |  Sequence analysis | High Performance
+	Software Libraries |  Sequence Analysis | BLAT
 \end{keywords}
 
 \begin{corrauthor}
 	rendong.yang\at northwestern.edu
 \end{corrauthor}
 
-\section*{Introduction}\label{s:introduction}
+\section*{Introduction}\label{sec:introduction}
 
 This is introduction.
 
-\section*{Materials and Methods}\label{s:materials-and-methods}
+\section*{Materials and Methods}\label{sec:materials-and-methods}
 
 This is materials and methods.
+Pybind11 ~\citep{pybind11}
 
-\subsection*{Design Philosophy of Pxblat}\label{s:design-philosophy-of-pxblat}
+\subsection*{Design Philosophy of PxBLAT}\label{ssec:design-philosophy-of-pxblat}
 
-\section*{Results}\label{s:results}
+% introduce features of pxblat
+% 1. no intermidiate files, all in memory
+% 2. no system call
+% 3. no bother with log files to get status of tool
+% 5. no need to worry about file format
+% 6. no other dependency
+% 4. higher proformance and Ergonomics
 
-\subsection*{Citations and ull size figures with legends underneath}
+\subsection*{Implementation}\label{ssec:implementation}
+
+% add generaal code usage example, introduce library api
+% Server, Client
+% and free function, start_server, stop_server, query_server, status_server, fa2twobit
+% yet another command line application:
+% pxblat server -h
+% pxblat client -h
+% pxblat fatotwobit -h
+%
+
+% introduce multiple thread version server and one thread one client model,
+
+% query result will be parsed via BIO-python
+
+\section*{Results}\label{sec:results}
+
+\subsection*{PxBLAT has consistent result with BLAT}\label{ssec:pxblat-has-consistent-result-with-blat}
+
+% show length distribution of fas data
+% and show have same results
+
+\subsection*{Benchmarking Performance}\label{ssec:benchmarking-performance}
+
+% show performance with one thread one client model, compared to original command line version
+
+
+\subsection*{Ergonomics}\label{ssec:ergonomics}
+
+
+% add code example using with context
+% with Server() as server:
+%     client = Client()
+%     client.start()
+%     ret = client.get()
+%
+% show non-blocking client usage, and present its advantage in graph
+
+% for example:
+%
+% server = Server()
+% client = Client()
+% client.start()
+% do some stuffs that consuming time and do not need query result, then get query result
+% result = client.get()
+% do other stuffs that need query result
+% close server when needs
+% server.stop()
+
+
 
 Text is added like this
 This is a reference to a published paper \citep{watson_molecular_1953}.
@@ -73,218 +129,29 @@ It is possible to add a one-column Figure like this (Figure \ref{fig:nucleus}).
 \end{figure}
 
 
-\section*{Discussion}\label{s:discussion}
+\section*{Discussion}\label{sec:discussion}
 
 This is the discussion section where you wax lyrical about your findings.
 You can put your work in the context of other published work \citep{brenner_uga:_1967}.
 
+% discuss event-based io may be applied in the future.
+%
 
 
-\section*{Acknowledgements}\label{s:acknowledgements}
+\section*{Acknowledgements}\label{sec:acknowledgements}
 
 
-\section*{Conflict of interest}\label{s:conflict-of-interest}
+\section*{Conflict of interest}\label{sec:conflict-of-interest}
 
-\section*{Funding}\label{s:funding}
+\section*{Funding}\label{sec:funding}
 
-\section*{Data availability}\label{s:data-availability}
+\section*{Data availability}\label{sec:data-availability}
 
 
-\section*{Reference}\label{s:reference}
+\section*{Reference}\label{sec:reference}
 
 \bibliographystyle{bxv_abbrvnat}
 \bibliography{refs.bib}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
