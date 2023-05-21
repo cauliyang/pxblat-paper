@@ -55,9 +55,9 @@
 \RequirePackage{textgreek}
 % for no hyphenation add [none] option
 \if@submit
-  \usepackage[none]{hyphenat}
+	\usepackage[none]{hyphenat}
 \else
-  \usepackage{hyphenat}
+	\usepackage{hyphenat}
 \fi
 % reduce the spacing after a full-stop
 %\frenchspacing
@@ -81,17 +81,17 @@
 \RequirePackage[misc]{ifsym} % For the \Letter symbol
 \RequirePackage{bbding} % For the \Envelope symbol
 \RequirePackage[a4paper,
-                total={170mm,247mm},
-                left=20mm,
-                top=25mm]{geometry}
+	total={170mm,247mm},
+	left=20mm,
+	top=25mm]{geometry}
 \RequirePackage[labelfont={bf,sf},%
-                labelsep=period,%
-                figurename=Figure]{caption}
+	labelsep=period,%
+	figurename=Figure]{caption}
 
 %% line numbers
 \if@submit
-  \RequirePackage{lineno}
-  \linenumbers
+	\RequirePackage{lineno}
+	\linenumbers
 \fi
 
 \PassOptionsToPackage{hyphens}{url}
@@ -177,9 +177,9 @@
 
 \renewcommand{\topfraction}{0.99}
 \if@submit
-  \renewcommand{\floatpagefraction}{0.5}
+	\renewcommand{\floatpagefraction}{0.5}
 \else
-  \renewcommand{\floatpagefraction}{0.8} % changed from 0.5 because single column figs bigger than 0.5 were excluding all text in that column
+	\renewcommand{\floatpagefraction}{0.8} % changed from 0.5 because single column figs bigger than 0.5 were excluding all text in that column
 \fi
 \renewcommand{\bottomfraction}{0.99}
 \renewcommand{\textfraction}{0.01}
@@ -194,16 +194,16 @@
 \newcommand{\titlefont}{\fontfamily{lmss}\bfseries\fontsize{18pt}{20pt}\selectfont}
 \newcommand{\dropcapfont}{\fontfamily{lmss}\bfseries\fontsize{22pt}{24pt}\selectfont}
 \if@submit
-  \newcommand{\datesfont}{\normalfont\sffamily\fontsize{7}{9}\selectfont}
-  \newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{10}{12}\selectfont}
-  \newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{10}{11}\selectfont}
-  \newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{10}{11}\selectfont}
+	\newcommand{\datesfont}{\normalfont\sffamily\fontsize{7}{9}\selectfont}
+	\newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{10}{12}\selectfont}
+	\newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{10}{11}\selectfont}
+	\newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{10}{11}\selectfont}
 \else
-  \newcommand{\headerfont}{\normalfont\sffamily\fontsize{7}{9} \selectfont}
-  \newcommand{\datesfont}{\normalfont\sffamily\fontsize{7}{8}\selectfont}
-  \newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
-  \newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{7}{10}\selectfont}
-  \newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{6}{8}\selectfont}
+	\newcommand{\headerfont}{\normalfont\sffamily\fontsize{7}{9} \selectfont}
+	\newcommand{\datesfont}{\normalfont\sffamily\fontsize{7}{8}\selectfont}
+	\newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
+	\newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{7}{10}\selectfont}
+	\newcommand{\copyrightfont}{\normalfont\rmfamily\fontsize{6}{8}\selectfont}
 \fi
 
 %% Set document color scheme
@@ -213,78 +213,78 @@
 
 %% Author and affiliation
 \if@submit
-  %% Author and affiliation
-  \setlength{\affilsep}{12pt}
-  \renewcommand\Authfont{\color{color1}\normalfont\sffamily\bfseries\fontsize{9}{10}\selectfont}
-  \renewcommand\Affilfont{\color{color1}\normalfont\sffamily\fontsize{9}{10}\selectfont}
-  \makeatletter
-  % uncomment the following line to have affiliations on same line
-  % \renewcommand\AB@affilsepx{; \protect\Affilfont}
-  \renewcommand\Authands{, and }
+	%% Author and affiliation
+	\setlength{\affilsep}{12pt}
+	\renewcommand\Authfont{\color{color1}\normalfont\sffamily\bfseries\fontsize{9}{10}\selectfont}
+	\renewcommand\Affilfont{\color{color1}\normalfont\sffamily\fontsize{9}{10}\selectfont}
+	\makeatletter
+	% uncomment the following line to have affiliations on same line
+	% \renewcommand\AB@affilsepx{; \protect\Affilfont}
+	\renewcommand\Authands{, and }
 \else
-  \setlength{\affilsep}{8.5pt} % 16.5pts between base of author line and base of affil line
-  \renewcommand\Authfont{\color{color1}\normalfont\sffamily\bfseries\fontsize{9}{11}\selectfont}
-  \renewcommand\Affilfont{\color{color1}\normalfont\sffamily\fontsize{7}{8}\selectfont}
-  \makeatletter
-  % comment the following line to have affiliations on separate lines
-  \renewcommand\AB@affilsepx{; \protect\Affilfont}
-  \renewcommand\Authands{, and }
+	\setlength{\affilsep}{8.5pt} % 16.5pts between base of author line and base of affil line
+	\renewcommand\Authfont{\color{color1}\normalfont\sffamily\bfseries\fontsize{9}{11}\selectfont}
+	\renewcommand\Affilfont{\color{color1}\normalfont\sffamily\fontsize{7}{8}\selectfont}
+	\makeatletter
+	% comment the following line to have affiliations on separate lines
+	\renewcommand\AB@affilsepx{; \protect\Affilfont}
+	\renewcommand\Authands{, and }
 \fi
 
 %% Section/subsection/paragraph set-up
 \RequirePackage[explicit]{titlesec}
 \renewcommand{\thesubsection}{\Alph{subsection}}
 \titleformat{\section}
-  {\Large\sffamily\bfseries}
-  {}
-  {0em}
-  {Supplementary Note \thesection: #1}
-  []
+{\Large\sffamily\bfseries}
+{}
+{0em}
+{Supplementary Note \thesection: #1}
+[]
 \titleformat{name=\section,numberless}
-  {\Large\sffamily\bfseries}
-  {}
-  {0em}
-  {#1}
-  []
+{\Large\sffamily\bfseries}
+{}
+{0em}
+{#1}
+[]
 \titleformat{\subsection}
-  {\sffamily\bfseries}
-  {\thesubsection.}
-  {0.5em}
-  {#1}
-  []
+{\sffamily\bfseries}
+{\thesubsection.}
+{0.5em}
+{#1}
+[]
 \titleformat{\subsubsection}[runin]
-  {\sffamily\small\bfseries\itshape}
-  {\thesubsubsection.}
-  {0.5em}
-  {#1. }
-  []
+{\sffamily\small\bfseries\itshape}
+{\thesubsubsection.}
+{0.5em}
+{#1. }
+[]
 \titleformat{\paragraph}[runin]
-  {\sffamily\small\bfseries}
-  {}
-  {0em}
-  {#1}
+{\sffamily\small\bfseries}
+{}
+{0em}
+{#1}
 
 %% from here on there remain differences for the submit style
 %% TODO: check these out (from l. 245 in StyleSubmit.cls)
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
 \if@submit
-  \titlespacing*{\subsection}{0pc}{3ex \@plus4pt \@minus2pt}{4pt}
+	\titlespacing*{\subsection}{0pc}{3ex \@plus4pt \@minus2pt}{4pt}
 \else
-  \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{2pt}
+	\titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{2pt}
 \fi
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{2pt}
 \titlespacing*{\paragraph}{0pc}{1.5ex \@plus2pt \@minus1pt}{12pt}
 
 \if@submit
-  \let\oldsection\section
-  \renewcommand\section{\clearpage\oldsection}
+	\let\oldsection\section
+	\renewcommand\section{\clearpage\oldsection}
 \fi
 
 %% Figure caption style
 \if@submit
-  \DeclareCaptionFormat{smallformat}{\normalfont\sffamily\fontsize{9}{12}\selectfont#1#2#3}
+	\DeclareCaptionFormat{smallformat}{\normalfont\sffamily\fontsize{9}{12}\selectfont#1#2#3}
 \else
-  \DeclareCaptionFormat{smallformat}{\normalfont\sffamily\fontsize{7}{9}\selectfont#1#2#3}
+	\DeclareCaptionFormat{smallformat}{\normalfont\sffamily\fontsize{7}{9}\selectfont#1#2#3}
 \fi
 \DeclareCaptionFormat{largeformat}{\normalfont\sffamily\fontsize{9}{12}\selectfont#1#2#3}
 \captionsetup*{format=smallformat}
@@ -312,9 +312,9 @@
 \bibliographystyle{bxv_abbrvnat}
 \renewcommand{\bibsection}{} % Remove header
 \if@submit
-  \renewcommand\bibfont{\normalfont\sffamily\fontsize{9}{10}\selectfont} % set font to be sans serif
+	\renewcommand\bibfont{\normalfont\sffamily\fontsize{9}{10}\selectfont} % set font to be sans serif
 \else
-  \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
+	\renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
 \fi
 
 \makeatletter
@@ -325,88 +325,88 @@
 
 %% Title
 \def\maketitle{\par
-  \begingroup
-  \def\thefootnote{} % the \thanks{} mark type is empty
-\if@tmptwocolumn
-  \twocolumn[\@maketitle]
-\else
-%  \@maketitle % for some reason tmptwocolumn is not declared so this is a fix
-  \@maketitle
-\fi
-  \thispagestyle{plain}\@thanks
-  \endgroup
-  \setcounter{footnote}{0}\let\maketitle\relax\let\@maketitle\relax
-  \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax
+	\begingroup
+	\def\thefootnote{} % the \thanks{} mark type is empty
+	\if@tmptwocolumn
+		\twocolumn[\@maketitle]
+	\else
+		%  \@maketitle % for some reason tmptwocolumn is not declared so this is a fix
+		\@maketitle
+	\fi
+	\thispagestyle{plain}\@thanks
+	\endgroup
+	\setcounter{footnote}{0}\let\maketitle\relax\let\@maketitle\relax
+	\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax
 }
 
 \if@submit
-  \def\@maketitle{\newpage
-    \begin{flushleft}
-      \vskip0.2em{\Huge\bfseries\@title\par}\vskip1.0em%
-      {\lineskip.5em\large\@author\par}
-    \end{flushleft}
-      \par\vskip 1.4em}
+	\def\@maketitle{\newpage
+		\begin{flushleft}
+			\vskip0.2em{\Huge\bfseries\@title\par}\vskip1.0em%
+			{\lineskip.5em\large\@author\par}
+		\end{flushleft}
+		\par\vskip 1.4em}
 
-  %% Abstract and keywords
-  \def\abstract{\vspace{2em}
-    \ifbfabstract\normalsize\bfseries\else\footnotesize\fi}
+	%% Abstract and keywords
+	\def\abstract{\vspace{2em}
+		\ifbfabstract\normalsize\bfseries\else\footnotesize\fi}
 
-  \def\endabstract{\vspace{1.0em}\par\normalsize}
+	\def\endabstract{\vspace{1.0em}\par\normalsize}
 
-  \def\keywords{
-  \ifbfabstract\Affilfont\normalfont\else\footnotesize\fi}
-  \def\endkeywords{\vspace{1em}\par\normalsize}
+	\def\keywords{
+		\ifbfabstract\Affilfont\normalfont\else\footnotesize\fi}
+	\def\endkeywords{\vspace{1em}\par\normalsize}
 
-  \newcommand{\at}{\makeatletter @\makeatother}
-  \def\corrauthor{
-  \noindent\ifbfabstract\Affilfont\normalfont\else\footnotesize\fi  Correspondence:\itshape}
-  \def\endcorrauthor{\vspace{1em}\par\normalsize}
+	\newcommand{\at}{\makeatletter @\makeatother}
+	\def\corrauthor{
+		\noindent\ifbfabstract\Affilfont\normalfont\else\footnotesize\fi  Correspondence:\itshape}
+	\def\endcorrauthor{\vspace{1em}\par\normalsize}
 
-  \def\acknowledgements{
-  \Affilfont\bfseries ACKNOWLEDGEMENTS\par\mdseries}
-  \def\endacknowledgements{\vspace{1em}\par\normalsize}
+	\def\acknowledgements{
+		\Affilfont\bfseries ACKNOWLEDGEMENTS\par\mdseries}
+	\def\endacknowledgements{\vspace{1em}\par\normalsize}
 
-  \def\contributions{
-  \Affilfont\bfseries AUTHOR CONTRIBUTIONS\par\mdseries}
-  \def\endcontributions{\vspace{1em}\par\normalsize}
+	\def\contributions{
+		\Affilfont\bfseries AUTHOR CONTRIBUTIONS\par\mdseries}
+	\def\endcontributions{\vspace{1em}\par\normalsize}
 
-  \def\interests{
-  \Affilfont\bfseries COMPETING FINANCIAL INTERESTS\par\mdseries}
-  \def\endinterests{\vspace{1em}\par\normalsize}
+	\def\interests{
+		\Affilfont\bfseries COMPETING FINANCIAL INTERESTS\par\mdseries}
+	\def\endinterests{\vspace{1em}\par\normalsize}
 \else
-  \def\@maketitle{\newpage
-    \begin{flushleft}
-      \vskip0.2em{\huge\bfseries\@title\par}\vskip1.0em%
-      {\lineskip.5em\large\@author\par}
-    \end{flushleft}
-      \par\vskip 1.4em}
+	\def\@maketitle{\newpage
+		\begin{flushleft}
+			\vskip0.2em{\huge\bfseries\@title\par}\vskip1.0em%
+			{\lineskip.5em\large\@author\par}
+		\end{flushleft}
+		\par\vskip 1.4em}
 
-  %% Abstract and keywords
-  \def\abstract{%\vspace{-.3em}
-    \ifbfabstract\normalsize\bfseries\else\small\fi}
+	%% Abstract and keywords
+	\def\abstract{%\vspace{-.3em}
+		\ifbfabstract\normalsize\bfseries\else\small\fi}
 
-  \def\endabstract{\vspace{1.0em}\par\normalsize}
+	\def\endabstract{\vspace{1.0em}\par\normalsize}
 
-  \def\keywords{%\vspace{-.3em}
-  \ifbfabstract\Affilfont\bfseries\else\footnotesize\fi}
-  \def\endkeywords{\vspace{0.3em}\par\normalsize}
+	\def\keywords{%\vspace{-.3em}
+		\ifbfabstract\Affilfont\bfseries\else\footnotesize\fi}
+	\def\endkeywords{\vspace{0.3em}\par\normalsize}
 
-  \newcommand{\at}{\makeatletter @\makeatother}
-  \def\corrauthor{%\vspace{-.3em}
-  \noindent\ifbfabstract\Affilfont\bfseries\else\footnotesize\fi  Correspondence:\itshape}
-  \def\endcorrauthor{\vspace{0.3em}\par\normalsize}
+	\newcommand{\at}{\makeatletter @\makeatother}
+	\def\corrauthor{%\vspace{-.3em}
+		\noindent\ifbfabstract\Affilfont\bfseries\else\footnotesize\fi  Correspondence:\itshape}
+	\def\endcorrauthor{\vspace{0.3em}\par\normalsize}
 
-  \def\acknowledgements{\vspace{1em}
-  \Affilfont\bfseries ACKNOWLEDGEMENTS\par\mdseries}
-  \def\endacknowledgements{\vspace{0.3em}\par\normalsize}
+	\def\acknowledgements{\vspace{1em}
+		\Affilfont\bfseries ACKNOWLEDGEMENTS\par\mdseries}
+	\def\endacknowledgements{\vspace{0.3em}\par\normalsize}
 
-  \def\contributions{\vspace{.3em}
-  \Affilfont\bfseries AUTHOR CONTRIBUTIONS\par\mdseries}
-  \def\endcontributions{\vspace{0.3em}\par\normalsize}
+	\def\contributions{\vspace{.3em}
+		\Affilfont\bfseries AUTHOR CONTRIBUTIONS\par\mdseries}
+	\def\endcontributions{\vspace{0.3em}\par\normalsize}
 
-  \def\interests{\vspace{.3em}
-  \Affilfont\bfseries COMPETING FINANCIAL INTERESTS\par\mdseries}
-  \def\endinterests{\vspace{0.3em}\par\normalsize}
+	\def\interests{\vspace{.3em}
+		\Affilfont\bfseries COMPETING FINANCIAL INTERESTS\par\mdseries}
+	\def\endinterests{\vspace{0.3em}\par\normalsize}
 \fi
 
 %% environments
@@ -415,9 +415,9 @@
 \def\proof{\noindent\hspace{2em}{\it Proof: }}
 \def\endproof{\hspace*{\fill}~\QED\par\endtrivlist\unskip}
 \def\@begintheorem#1#2{\tmpitemindent\itemindent\topsep 0pt\rm\trivlist
-    \item[\hskip \labelsep{\indent\it #1\ #2:}]\itemindent\tmpitemindent}
+	\item[\hskip \labelsep{\indent\it #1\ #2:}]\itemindent\tmpitemindent}
 \def\@opargbegintheorem#1#2#3{\tmpitemindent\itemindent\topsep 0pt\rm \trivlist
-    \item[\hskip\labelsep{\indent\it #1\ #2\ \rm(#3)}]\itemindent\tmpitemindent}
+	\item[\hskip\labelsep{\indent\it #1\ #2\ \rm(#3)}]\itemindent\tmpitemindent}
 \def\@endtheorem{\endtrivlist\unskip}
 
 \newtheorem{theorem}{Theorem}
@@ -425,39 +425,44 @@
 \newtheorem{corollary}{Corollary}
 
 \if@submit
-    \onecolumn \sloppy \flushbottom
+	\onecolumn \sloppy \flushbottom
 \else
-    \twocolumn \sloppy \flushbottom
+	\twocolumn \sloppy \flushbottom
 \fi
 
 %% Allows BIOGRAPHY and leaves place for picture
 %%
 \if@submit
-  \newenvironment{biography}[1]{%
-  \normalsize\unitlength 1mm\bigskip\bigskip\bigskip\parskip=0pt\par%
-  \rule{0pt}{39mm}\vspace{-39mm}\par%   guarantees correct page breaking
-  \noindent\setbox0\hbox{\framebox(25,32){}}%   box containing the frame
-  \ht0=37mm\count10=\ht0\divide\count10 by\baselineskip%  calculates lines
-  \global\hangindent29mm\global\hangafter-\count10%
-  \hskip-28.5mm\setbox0\hbox to 28.5mm {\raise-30.5mm\box0\hss}%
-  \dp0=0mm\ht0=0mm\box0\noindent\bf#1\rm}{
-  \par\rm\normalsize}
+	\newenvironment{biography}[1]{%
+		\normalsize\unitlength 1mm\bigskip\bigskip\bigskip\parskip=0pt\par%
+		\rule{0pt}{39mm}\vspace{-39mm}\par%   guarantees correct page breaking
+		\noindent\setbox0\hbox{\framebox(25,32){}}%   box containing the frame
+		\ht0=37mm\count10=\ht0\divide\count10 by\baselineskip%  calculates lines
+		\global\hangindent29mm\global\hangafter-\count10%
+		\hskip-28.5mm\setbox0\hbox to 28.5mm {\raise-30.5mm\box0\hss}%
+		\dp0=0mm\ht0=0mm\box0\noindent\bf#1\rm}{
+		\par\rm\normalsize}
 \else
-  \newenvironment{biography}[1]{%
-  \footnotesize\unitlength 1mm\bigskip\bigskip\bigskip\parskip=0pt\par%
-  \rule{0pt}{39mm}\vspace{-39mm}\par%   guarantees correct page breaking
-  \noindent\setbox0\hbox{\framebox(25,32){}}%   box containing the frame
-  \ht0=37mm\count10=\ht0\divide\count10 by\baselineskip%  calculates lines
-  \global\hangindent29mm\global\hangafter-\count10%
-  \hskip-28.5mm\setbox0\hbox to 28.5mm {\raise-30.5mm\box0\hss}%
-  \dp0=0mm\ht0=0mm\box0\noindent\bf#1\rm}{
-  \par\rm\normalsize}
+	\newenvironment{biography}[1]{%
+		\footnotesize\unitlength 1mm\bigskip\bigskip\bigskip\parskip=0pt\par%
+		\rule{0pt}{39mm}\vspace{-39mm}\par%   guarantees correct page breaking
+		\noindent\setbox0\hbox{\framebox(25,32){}}%   box containing the frame
+		\ht0=37mm\count10=\ht0\divide\count10 by\baselineskip%  calculates lines
+		\global\hangindent29mm\global\hangafter-\count10%
+		\hskip-28.5mm\setbox0\hbox to 28.5mm {\raise-30.5mm\box0\hss}%
+		\dp0=0mm\ht0=0mm\box0\noindent\bf#1\rm}{
+		\par\rm\normalsize}
 \fi
 
 %% Default rules for including pictures
 \RequirePackage{graphicx}
 \RequirePackage{color}
 \DeclareGraphicsRule{*}{eps}{*}{}
+
+%% add custom package
+
+\RequirePackage[acronym, style=index, shortcuts]{glossaries}
+
 
 %% Page headers and footers
 %%
@@ -466,42 +471,42 @@
 \pagestyle{fancy}		  % Enables the custom headers/footers
 
 \if@submit
-  \def\aBioRXiv{{\footnotesize
-  \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
-  }}
+	\def\aBioRXiv{{\footnotesize
+				\footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
+			}}
 
-  \def\bBioRXiv{{\footnotesize
-  \footerfont \thepage\hspace{7pt}|
-  }}
+	\def\bBioRXiv{{\footnotesize
+				\footerfont \thepage\hspace{7pt}|
+			}}
 
-  \def\cBioRXiv{{\footnotesize
-  \footerfont |\hspace{7pt}\thepage
-  }}
+	\def\cBioRXiv{{\footnotesize
+				\footerfont |\hspace{7pt}\thepage
+			}}
 \else
-  \def\aBioRXiv{{\footnotesize
-      \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo} \hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
-    }}
+	\def\aBioRXiv{{\footnotesize
+				\footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo} \hspace{7pt}|\hspace{7pt}\today\hspace{7pt}|\hspace{7pt}\thepage\textendash\pageref{LastPage}
+			}}
 
-  \def\bBioRXiv{{\footnotesize
-      \footerfont \thepage\hspace{7pt}|\hspace{7pt}\includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo}
-    }}
+	\def\bBioRXiv{{\footnotesize
+				\footerfont \thepage\hspace{7pt}|\hspace{7pt}\includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo}
+			}}
 
-  \def\cBioRXiv{{\footnotesize
-      \footerfont \includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo}\hspace{7pt}|\hspace{7pt}\thepage
-    }}
+	\def\cBioRXiv{{\footnotesize
+				\footerfont \includegraphics[width=1cm, trim=0 1.5cm 0 0]{bioRxiv_logo}\hspace{7pt}|\hspace{7pt}\thepage
+			}}
 \fi
 
 \def\bSupInf{{\footnotesize
-    \footerfont \thepage\hspace{7pt}|\hspace{7pt}Supplementary Information
-  }}
+			\footerfont \thepage\hspace{7pt}|\hspace{7pt}Supplementary Information
+		}}
 
 \def\cSupInf{{\footnotesize
-    \footerfont Supplementary Information\hspace{7pt}|\hspace{7pt}\thepage
-  }}
+			\footerfont Supplementary Information\hspace{7pt}|\hspace{7pt}\thepage
+		}}
 
 \def\dAuthor{{\footnotesize
-    \footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\@shorttitle
-  }}
+			\footerfont \@leadauthor\ifnum \value{authors} > 2\hspace{2pt}\textit{et al.}\fi\hspace{7pt}|\hspace{7pt}\@shorttitle
+		}}
 
 
 
@@ -514,13 +519,43 @@
 \renewcommand{\headrulewidth}{0pt}
 
 \fancypagestyle{plain}{
-\fancyhf{}
-%\fancyfoot[RE]{}
-\fancyfoot[LO]{}
-%\fancyfoot[LE]{}
-\fancyfoot[RO]{\aBioRXiv}}
+	\fancyhf{}
+	%\fancyfoot[RE]{}
+	\fancyfoot[LO]{}
+	%\fancyfoot[LE]{}
+	\fancyfoot[RO]{\aBioRXiv}}
 
 \def\sectionmark#1{\relax}
 
 \parindent=0pt
 \endinput
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

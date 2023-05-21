@@ -1,37 +1,43 @@
- \leadauthor{Scientist}
+\leadauthor{Yangyang Li}
 
-\title{Description of an amazing research project}
-\shorttitle{Running title here}
+\title{Pxblat: An Efficient and Ergonomics Python Binding Library for BLAT}
+\shorttitle{Pxblat}
 
-\author[1]{First Scientist \orcidlink{0000-0001-0000-0000}}
-\author[2]{Second Doctor \orcidlink {000-0002-0000-0000}}
-\author[1,\Letter]{Third Professor \orcidlink {000-0003-0000-0000}}
-\affil[1]{A University, Academic Street, Learningtown, UK}
-\affil[2]{B Institute, Chalk Road, Blackboardville, USA}
+\author[1]{Yangyang Li\orcidlink{0000-0001-8224-1067}}
+% \author[2]{Second Doctor \orcidlink {000-0002-0000-0000}}
+\author[1,\Letter]{Rendong Yang \orcidlink {000-0003-0000-0000}}
+\affil[1]{Department of Urology, Northwestern University Feinberg School of Medicine, Chicago, IL 60611}
+% \affil[2]{B Institute, Chalk Road, Blackboardville, USA}
 \date{}
 
 \maketitle
 
 \begin{abstract}
-Abstract of the paper goes here.
-\lipsum[1]
+	Abstract of the paper goes here.
 \end{abstract}
 
+
 \begin{keywords}
-keyword1 | keyword2 | keyword3
+	Software libraries |  Sequence analysis | High Performance
 \end{keywords}
 
 \begin{corrauthor}
-third.professor\at awesome.ac.uk
+	rendong.yang\at northwestern.edu
 \end{corrauthor}
 
 \section*{Introduction}\label{s:introduction}
 
-\lipsum{2-6}
+This is introduction.
+
+\section*{Materials and Methods}\label{s:materials-and-methods}
+
+This is materials and methods.
+
+\subsection*{Design Philosophy of Pxblat}\label{s:design-philosophy-of-pxblat}
 
 \section*{Results}\label{s:results}
 
-\subsection*{Citations and full size figures with legends underneath}
+\subsection*{Citations and ull size figures with legends underneath}
 
 Text is added like this
 This is a reference to a published paper \citep{watson_molecular_1953}.
@@ -48,66 +54,264 @@ As you can see (Figure \ref{fig:cells}).
 
 % full size figure is figure*
 \begin{figure*}
-\centering
-\includegraphics[width=0.75\linewidth]{Figures/temp.png}
-\caption{\textbf{These are cells.}\\
-(\textbf{A}) This is a regular figure with a legend as a caption underneath. Inset: 3X zoom. Scale bar, \SI{10}{\micro\meter}.}
-\label{fig:cells}
+	\centering
+	\includegraphics[width=0.75\linewidth]{Figures/temp.png}
+	\caption{\textbf{These are cells.}\\
+		(\textbf{A}) This is a regular figure with a legend as a caption underneath. Inset: 3X zoom. Scale bar, \SI{10}{\micro\meter}.}
+	\label{fig:cells}
 \end{figure*}
 
 It is possible to add a one-column Figure like this (Figure \ref{fig:nucleus}).
-To add Supplementary Figures you can do either of these things and have them at the end of the end of the paper (Supplementary Figure \ref{suppfig:endosome}).
-Or like this (Supplementary Figure \ref{videosupp:lysosome}).
-
-\lipsum[10]
-
-\subsection*{Subsections are written like this}
-
-\lipsum[11]
 
 % one-column size figure is figure
 \begin{figure}
-\centering
-\includegraphics[width=0.75\linewidth]{Figures/temp.png}
-\caption{\textbf{This is a nucleus.}\\
-(\textbf{A}) This is a one-column figure with a legend as a caption underneath.}
-\label{fig:nucleus}
+	\centering
+	\includegraphics[width=0.75\linewidth]{Figures/temp.png}
+	\caption{\textbf{This is a nucleus.}\\
+		(\textbf{A}) This is a one-column figure with a legend as a caption underneath.}
+	\label{fig:nucleus}
 \end{figure}
 
-\lipsum[12]
-
-\subsection*{Another subsection}
-
-\lipsum[13-14]
-
-\subsection*{Another subsection}
-
-\lipsum[13-14]
-
-\subsection*{Another subsection}
-
-\lipsum[13-14]
 
 \section*{Discussion}\label{s:discussion}
 
 This is the discussion section where you wax lyrical about your findings.
 You can put your work in the context of other published work \citep{brenner_uga:_1967}.
 
-\lipsum[100-104]
 
-\section*{Methods}\label{s:methods}
 
-\subsection*{Molecular biology}
+\section*{Acknowledgements}\label{s:acknowledgements}
 
-Details of plasmids are usually first.
-Followed by cell biology section.
-We have special units defied for molar and for units, e.g. \SI{1}{\Molar} sucrose, \SI{10}{\Units\per\milli\litre}.
-Otherwise use siunitx for everything else. \SI{37}{\degreeCelsius} and what-not.
 
-\subsection*{Cell biology}
+\section*{Conflict of interest}\label{s:conflict-of-interest}
 
-\lipsum[80]
+\section*{Funding}\label{s:funding}
 
-\section*{Bibliography}
+\section*{Data availability}\label{s:data-availability}
+
+
+\section*{Reference}\label{s:reference}
+
 \bibliographystyle{bxv_abbrvnat}
 \bibliography{refs.bib}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
