@@ -112,7 +112,8 @@
 
 \PassOptionsToPackage{hyphens}{url}
 %% Hyperlinking
-\RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
+% \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
+\RequirePackage[colorlinks=true, citecolor=blue, urlcolor=blue, linkcolor=black]{hyperref}
 \RequirePackage{orcidlink}
 
 % \renewcommand\backreftwosep{, }
@@ -555,6 +556,25 @@
 
 \parindent=0pt
 \endinput
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

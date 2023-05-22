@@ -13,13 +13,11 @@
 \maketitle
 
 \begin{abstract}
-	Efficient manipulation and analysis of genomic data is a crucial task in bioinformatics, often relying on tools like the BLAST-Like Alignment Tool (BLAT).
-	However, working with BLAT directly can be computationally intensive and challenging for users less familiar with its interface.
-	This paper introduces PxBLAT, an ergonomic and efficient Python binding library for BLAT, designed to enhance the user experience and performance of genomic analysis tasks.
-	By providing a Pythonic interface to BLAT, PxBLAT simplifies the usage of BLAT, allowing users to incorporate its functionality directly into their Python-based bioinformatics workflows.
-	Our evaluation demonstrates that PxBLAT not only improves the efficiency of BLAT operations but also offers a more intuitive user interface, thereby reducing the complexity of genomic data analysis tasks.
-	Furthermore, our case studies illustrate how PxBLAT enhances both research and educational applications.
-	With its combination of improved efficiency and usability, PxBLAT represents a significant contribution to bioinformatics programming, with the potential to transform genomic data analysis workflows.
+	\acrshort{pxblat} provides an ergonomic and efficient Python binding library for \acrshort{blat}, designed to enhance the user experience and performance of genomic analysis tasks.
+	% Efficient manipulation and analysis of genomic data is a crucial task in bioinformatics, often relying on tools like \acrfull{blat}.
+	% Nonetheless, integrating \acrshort{blat} directly can be cubsum and challenging for users less familiar with its interface.
+	By providing a Pythonic interface to \acrshort{blat}, \acrshort{pxblat} simplifies the usage of \acrshort{blat}, allowing incorporating its functionality directly into their Python-based bioinformatics workflows.
+	Furthermore, A new parallelization and non-blocking model enables improved efficiency and intuitive user interface, thereby reducing the complexity of genomic data analysis tasks.
 \end{abstract}
 
 
@@ -33,14 +31,10 @@
 
 % Outline
 % I. Introduction
-
 % Background on BLAT and its applications
 % Brief mention of the challenges or limitations with the existing setup
 % Introduction to PxBLAT and its purpose
 % Overview of the paper
-
-% draft:
-
 % II. Literature Review
 % Previous works on BLAT or similar tools
 % Studies on Python bindings for bioinformatics tools
@@ -77,75 +71,24 @@
 
 \section*{Introduction}\label{sec:introduction}
 
-
 The continual advancement of genome sequencing technologies has led to an exponential increase in available genomic data.
 Tools to analyze and manipulate these data have become critically important in both research and clinical contexts.
-BLAT (BLAST-Like Alignment Tool) is a key utility in bioinformatics, offering high-speed genomic sequence alignments with significant efficiency.
+\acrfull{blat}~\citep{kent2002blat} is a standout in the bioinformatics field for its capability to perform rapid genome sequence alignments.
+It offers a faster alternative to \acrfull{blast}~\citep{altschul1990basic}  for aligning DNA sequences to the human genome ~\citep{kent2002blat}.
 Despite its widespread use and acceptance in the bioinformatics community, interfacing with BLAT can present challenges, particularly when integrating it within a broader Python-based analytical pipeline.
+Since \acrshort{blat} is implemented by C programming language and only provides a variety of utilities with a \acrfull{cli}.
+So far, we lack a holistic approach to enhance both the performance and the usability of BLAT.
 
-This paper introduces PxBLAT, a novel Python binding library designed to streamline and enhance the interaction with BLAT, thereby making it more efficient and ergonomic.
-This binding library serves as a bridge, bringing the high-performance capabilities of BLAT into the Python environment, which is widely regarded for its readability, simplicity, and extensive library support.
-By improving the usability of BLAT and enhancing its integration within Python, PxBLAT opens up new possibilities for efficient genomic analysis.
+On the other hand, Python's rise as a favored programming language in bioinformatics is well-documented, due to its ease of use, extensive libraries, and versatility~\citep{perkel2015programming}.
+Various binding libraries have been developed to extend Python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
+For instance, Biopython~\citep{cock2009biopython}, one of the most prominent bioinformatics libraries, provides interfaces to tools like \acrshort{blast} ~\citep{altschul1990basic}, Clustal~\citep{higgins1988clustal}, and others.
+Nonetheless, to date, no comprehensive Python binding library for BLAT has been developed.
 
-This study details the design, implementation, and evaluation of PxBLAT.
+Here we propose \acrshort{pxblat}, a modern Python library designed to streamline and enhance the interaction with BLAT, thereby making it more efficient and ergonomic.
+\acrshort{pxblat} serves as a bridge, bringing the high-performance capabilities of BLAT into the Python environment, which is widely regarded for its readability, simplicity, and extensive library support.
+By improving the usability of \acrshort{blat}  and seamless integration within Python, \acrshort{pxblat} opens up new possibilities for efficient genomic analysis.
 We provide evidence of its performance improvements, demonstrate its ergonomic advantages, and discuss its potential applications in genomic research.
-Through comparison tests and case studies, we highlight how PxBLAT enhances BLAT utilization, potentially contributing to a more streamlined, efficient, and accessible landscape in bioinformatics.
-The overarching aim of this work is to contribute to the growing body of tools that empower researchers in handling large genomic datasets, enabling faster, more accurate analysis and facilitating breakthroughs in our understanding of genomic data.
-
-
-
-% Our exploration begins with the study of the BLAST-Like Alignment Tool (BLAT), a standout in the bioinformatics field for its capability to perform rapid genome sequence alignments.
-% Kent first introduced BLAT in 2002, offering a faster alternative to Basic Local Alignment Search Tool (BLAST) for aligning DNA sequences to the human genome [Ref].
-% Over the years, several studies have reinforced the efficacy of BLAT in various applications, ranging from gene mapping to whole-genome alignments [Ref1, Ref2, Ref3].
-
-
-% However, despite BLAT's performance and wide utilization, limitations exist in its interface and integration with other bioinformatics tools.
-% These issues have been sporadically addressed in literature, mainly through the development of wrappers or libraries attempting to augment BLAT's functionality [Ref4, Ref5].
-% Yet, these solutions often provide only partial or inefficient integration, lacking a holistic approach to enhance both the performance and the usability of BLAT.
-%
-
-% On the other hand, Python's rise as a favored programming language in bioinformatics is well-documented, due to its ease of use, extensive libraries, and versatility [Ref6].
-% Various binding libraries have been developed to extend Python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools [Ref7, Ref8].
-% For instance, Biopython, one of the most prominent bioinformatics libraries, provides interfaces to tools like BLAST, Clustal, and others [Ref9].
-% However, to date, no comprehensive Python binding library for BLAT has been developed.
-%
-
-% It is against this backdrop that our research into PxBLAT takes place.
-% The intent is to fill the observed gap by providing a Python binding library specifically tailored for BLAT, addressing both its efficiency and ergonomic concerns.
-% This study is one of the first to take a holistic approach, potentially contributing to more streamlined, efficient genomic analysis workflows.
-
-% Please note that the "[Ref]" markers are placeholders for actual references.
-% Be sure to replace them with appropriate citations corresponding to the points discussed.
-
-
-
-% What are the differences between BLAT ~\citep{kent2002blat} and BLAST ~\citep{altschul1990basic}?
-% BLAT is an alignment tool like BLAST, but it is structured differently.
-% On DNA, BLAT works by keeping an index of an entire genome in memory.
-% Thus, the target database of BLAT is not a set of GenBank sequences, but instead an index derived from the assembly of the entire genome.
-% By default, the index consists of all non-overlapping 11-mers except for those heavily involved in repeats, and it uses less than a gigabyte of RAM.
-% This smaller size means that BLAT is far more easily mirrored than BLAST.
-% Blat of DNA is designed to quickly find sequences of 95\% and greater similarity of length 40 bases or more.
-% It may miss more divergent or shorter sequence alignments.
-% (The default settings and expected behavior of standalone Blat are slightly different from those on the graphical version of BLAT.
-% )
-
-% On proteins, BLAT uses 4-mers rather than 11-mers, finding protein sequences of \SI{80}{\percent}  and greater similarity to the query of length 20+ amino acids.
-% The protein index requires slightly more than 2 gigabytes of RAM.
-% In practice -- due to sequence divergence rates over evolutionary time -- DNA BLAT works well within humans and primates, while protein Blat continues to find good matches within terrestrial vertebrates and even earlier organisms for conserved proteins.
-% Within humans, protein Blat gives a much better picture of gene families (paralogs) than DNA Blat.
-% However, BLAST and psi-BLAST at NCBI can find much more remote matches.
-
-% From a practical standpoint, BLAT has several advantages over BLAST:
-
-% speed (no queues, response in seconds) at the price of lesser homology depth
-% the ability to submit a long list of simultaneous queries in fasta format
-% five convenient output sort options
-% a direct link into the UCSC browser
-% alignment block details in natural genomic order
-% an option to launch the alignment later as part of a custom track
-% BLAT is commonly used to look up the location of a sequence in the genome or determine the exon structure of an mRNA, but expert users can run large batch jobs and make internal parameter sensitivity changes by installing command-line Blat on their own Linux server.
-
+The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for BLAT, addressing both its efficiency and ergonomic concerns.
 
 \section*{Materials and Methods}\label{sec:materials-and-methods}
 
@@ -153,7 +96,7 @@ This is materials and methods.
 Pybind11 ~\citep{pybind11}
 blat ~\citep{kent2002blat}
 
-\subsection*{Design Philosophy of PxBLAT}\label{ssec:design-philosophy-of-pxblat}
+\subsection*{Design Philosophy}\label{ssec:design-philosophy}
 
 % introduce features of pxblat
 % 1. no intermidiate files, all in memory
@@ -164,31 +107,31 @@ blat ~\citep{kent2002blat}
 % 4. higher proformance and Ergonomics (compare with current blat endpoint)
 
 
-% The overarching goal in the development of PxBLAT was to create an efficient, ergonomic Python binding library that enhances the interface and usage of the BLAT tool.
-% We approached this by focusing on the crucial aspects of implementation design, library features, and integration.
+The study aims to create an efficient, ergonomic Python binding library that enhances the interface and usage of the BLAT tool.
+We approached this by focusing on the crucial aspects of implementation design, library features, and integration.
 
 % Design Philosophy
 
-% The design of PxBLAT follows the Pythonic principles of readability and simplicity.
-% It is built to be intuitive, reducing the learning curve for users familiar with Python and bioinformatics tools.
-% In line with this, we focused on minimizing the complexity of the system while maximizing the usability and performance of BLAT.
+The design of PxBLAT follows the Pythonic principles of readability and simplicity.
+It is built to be intuitive, reducing the learning curve for users familiar with Python and bioinformatics tools.
+In line with this, we focused on minimizing the complexity of the system while maximizing the usability and performance of BLAT.
 
 % Implementation
 
-% PxBLAT is implemented in Python, employing ctypes, a Python library, to interface with the BLAT's C code.
-% This approach enabled direct access to the functions of the BLAT program without modifying its original source code, preserving the integrity and performance of BLAT while extending its capabilities.
+PxBLAT is implemented in Python, employing ctypes, a Python library, to interface with the BLAT's C code.
+This approach enabled direct access to the functions of the BLAT program without modifying its original source code, preserving the integrity and performance of BLAT while extending its capabilities.
 
 
 % Library Features
 
-% PxBLAT includes a range of features to enhance the user experience with BLAT:
-% Seamless Integration: PxBLAT is designed to work cohesively within the Python environment, allowing the user to utilize the BLAT functions as if they were Python functions.
-% It is compatible with popular Python bioinformatics libraries like Biopython and NumPy.
-% Efficiency: By accessing BLAT's functionality directly from Python, PxBLAT reduces the need for system calls, improving the overall efficiency of bioinformatics pipelines that use BLAT.
-% Error Handling: PxBLAT incorporates robust error handling, ensuring that BLAT-related errors are captured and communicated to the user in a Pythonic manner.
-% Documentation and Examples: PxBLAT comes with comprehensive documentation and a suite of example scripts to demonstrate how to use the library effectively.
-% In conclusion, the design and implementation of PxBLAT align with our goal of providing an efficient and ergonomic Python binding library for BLAT.
-% The developed library unlocks new possibilities for efficient genomic analysis, especially within the context of Python-based workflows.
+PxBLAT includes a range of features to enhance the user experience with BLAT:
+Seamless Integration: PxBLAT is designed to work cohesively within the Python environment, allowing the user to utilize the BLAT functions as if they were Python functions.
+It is compatible with popular Python bioinformatics libraries like Biopython and NumPy.
+Efficiency: By accessing BLAT's functionality directly from Python, PxBLAT reduces the need for system calls, improving the overall efficiency of bioinformatics pipelines that use BLAT.
+Error Handling: PxBLAT incorporates robust error handling, ensuring that BLAT-related errors are captured and communicated to the user in a Pythonic manner.
+Documentation and Examples: PxBLAT comes with comprehensive documentation and a suite of example scripts to demonstrate how to use the library effectively.
+In conclusion, the design and implementation of PxBLAT align with our goal of providing an efficient and ergonomic Python binding library for BLAT.
+The developed library unlocks new possibilities for efficient genomic analysis, especially within the context of Python-based workflows.
 
 
 \subsection*{Implementation}\label{ssec:implementation}
@@ -201,6 +144,9 @@ blat ~\citep{kent2002blat}
 % pxblat client -h
 % pxblat fatotwobit -h
 %
+
+Type hints are provided for all public classes and functions, allowing a static analyzer such as MyPy (https://mypy-lang. org) to detect type errors ahead of runtime.
+These type annotations also make PyHMMER more pleasant to use inside an Integrated Development Environment (IDE), where the function signatures can be suggested and corrected automatically.
 
 % introduce multiple thread version server and one thread one client model,
 
@@ -409,6 +355,754 @@ The benchmarking dataset and code is located in  GitHub as well.
 \bibliographystyle{bxv_abbrvnat}
 \bibliography{refs.bib}
 % \printbibliography
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
