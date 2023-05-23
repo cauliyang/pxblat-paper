@@ -1,7 +1,7 @@
 \leadauthor{Yangyang Li}
 
 \title{PxBLAT: An Efficient and Ergonomics Python Binding Library for BLAT}
-\shorttitle{Ergonomic Genomic Analysis with PxBLAT}
+\shorttitle{Ergonomic Genomic Analysis with \acrshort{pxblat} }
 
 \author[1]{Yangyang Li\orcidlink{0000-0001-8224-1067}}
 % \author[2]{Second Doctor \orcidlink {000-0002-0000-0000}}
@@ -14,9 +14,7 @@
 
 \begin{abstract}
 	\acrshort{pxblat} provides an ergonomic and efficient Python binding library for \acrshort{blat}, designed to enhance the user experience and performance of genomic analysis tasks.
-	% Efficient manipulation and analysis of genomic data is a crucial task in bioinformatics, often relying on tools like \acrfull{blat}.
-	% Nonetheless, integrating \acrshort{blat} directly can be cubsum and challenging for users less familiar with its interface.
-	By providing a Pythonic interface to \acrshort{blat}, \acrshort{pxblat} simplifies the usage of \acrshort{blat}, allowing incorporating its functionality directly into their Python-based bioinformatics workflows.
+	By providing a pythonic interface to \acrshort{blat}, \acrshort{pxblat} simplifies the usage of \acrshort{blat}, allowing incorporating its functionality directly into their Python-based bioinformatics workflows.
 	Furthermore, A new parallelization and non-blocking model enables improved efficiency and intuitive user interface, thereby reducing the complexity of genomic data analysis tasks.
 \end{abstract}
 
@@ -29,46 +27,6 @@
 	rendong.yang\at northwestern.edu
 \end{corrauthor}
 
-% Outline
-% I. Introduction
-% Background on BLAT and its applications
-% Brief mention of the challenges or limitations with the existing setup
-% Introduction to PxBLAT and its purpose
-% Overview of the paper
-% II. Literature Review
-% Previous works on BLAT or similar tools
-% Studies on Python bindings for bioinformatics tools
-% Identification of gaps in current literature that PxBLAT addresses
-
-% III. PxBLAT: Design and Implementation
-% Explanation of how PxBLAT was developed
-% Details about its Python binding implementation
-% Special features and advantages of PxBLAT
-
-% IV. Evaluation and Results
-% Testing methodologies used to evaluate PxBLAT
-% Discussion of testing results, including efficiency and ergonomic measurements
-% Comparisons with BLAT (and other similar tools, if applicable)
-
-% V. Case Studies
-% Discussion of the outcomes, emphasizing the benefits of PxBLAT
-
-% VI. Discussion
-% Interpretation of the results
-% Discussion on how PxBLAT improves upon existing tools
-% Potential implications for the field of bioinformatics
-
-% VII. Future Work
-% Possible improvements or extensions to PxBLAT
-% Future research directions
-
-% VIII. Conclusion
-% Recap of the paper's findings
-% Restatement of PxBLAT's value proposition
-
-% IX. References
-% Cite all sources referenced in your paper
-
 \section*{Introduction}\label{sec:introduction}
 
 The continual advancement of genome sequencing technologies has led to an exponential increase in available genomic data.
@@ -79,24 +37,18 @@ Despite its widespread use and acceptance in the bioinformatics community, inter
 Since \acrshort{blat} is implemented by C programming language and only provides a variety of utilities with a \acrfull{cli}.
 So far, we lack a holistic approach to enhance both the performance and the usability of BLAT.
 
-On the other hand, Python's rise as a favored programming language in bioinformatics is well-documented, due to its ease of use, extensive libraries, and versatility~\citep{perkel2015programming}.
-Various binding libraries have been developed to extend Python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
+On the other hand, python's rise as a favored programming language in bioinformatics is well-documented, due to its ease of use, extensive libraries, and versatility~\citep{perkel2015programming}.
+Various binding libraries have been developed to extend python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
 For instance, Biopython~\citep{cock2009biopython}, one of the most prominent bioinformatics libraries, provides interfaces to tools like \acrshort{blast} ~\citep{altschul1990basic}, Clustal~\citep{higgins1988clustal}, and others.
 Nonetheless, to date, no comprehensive Python binding library for BLAT has been developed.
 
-Here we propose \acrshort{pxblat}, a modern Python library designed to streamline and enhance the interaction with BLAT, thereby making it more efficient and ergonomic.
-\acrshort{pxblat} serves as a bridge, bringing the high-performance capabilities of BLAT into the Python environment, which is widely regarded for its readability, simplicity, and extensive library support.
+Here we propose \acrshort{pxblat}, a modern Python library designed to streamline and enhance the interaction with \acrshort{blat}, thereby making it more efficient and ergonomic.
+\acrshort{pxblat} serves as a bridge, bringing the high-performance capabilities of \acrshort{blat}  into the Python environment, which is widely regarded for its readability, simplicity, and extensive library support.
 By improving the usability of \acrshort{blat}  and seamless integration within Python, \acrshort{pxblat} opens up new possibilities for efficient genomic analysis.
 We provide evidence of its performance improvements, demonstrate its ergonomic advantages, and discuss its potential applications in genomic research.
 The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for BLAT, addressing both its efficiency and ergonomic concerns.
 
-\section*{Materials and Methods}\label{sec:materials-and-methods}
-
-This is materials and methods.
-Pybind11 ~\citep{pybind11}
-blat ~\citep{kent2002blat}
-
-\subsection*{Design Philosophy}\label{ssec:design-philosophy}
+\section*{Implementation}\label{sec:implementation}
 
 % introduce features of pxblat
 % 1. no intermidiate files, all in memory
@@ -106,223 +58,71 @@ blat ~\citep{kent2002blat}
 % 6. no other dependency
 % 4. higher proformance and Ergonomics (compare with current blat endpoint)
 
-
-The study aims to create an efficient, ergonomic Python binding library that enhances the interface and usage of the BLAT tool.
-We approached this by focusing on the crucial aspects of implementation design, library features, and integration.
-
-% Design Philosophy
-
-The design of PxBLAT follows the Pythonic principles of readability and simplicity.
+The design of \acrshort{pxblat} follows the pythonic principles of readability and simplicity.
 It is built to be intuitive, reducing the learning curve for users familiar with Python and bioinformatics tools.
-In line with this, we focused on minimizing the complexity of the system while maximizing the usability and performance of BLAT.
+In line with this, we focused on minimizing the complexity while maximizing the usability and performance.
+Hence, We employ existing C codebase and reimplement utilities of \acrshort{blat}(V37.1) suit  including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \acrshort{cli}  using Cpp programming language~\citep{kent2002blat}.
+Then, we create \acrshort{pxblat} via Pybind11~\citep{pybind11}.
+This approach enabled direct access to the functions of the \acrshort{blat} program without modifying its original source code, preserving the integrity and performance of \acrshort{blat} while extending its capabilities.
 
-% Implementation
+Furthermore, \acrshort{pxblat} eliminate the need for intermediate files, which allow all operations to be in memory, these tools can analyze and respond to data inputs almost instantaneously.
+Input and output file now become optional, which is more flexible.
+Meanwhile, \acrshort{pxblat} reduce the need of system calls to interact with \acrshort{blat}, which may prevent potential safe problem.
+It provides optional non-blocking operations as well, improving the overall efficiency.
+Importantly, \acrshort{pxblat} allow fetching status of \acrshort{blat} without manipulating log files, especially in concurrent environment.
+That means \acrshort{pxblat} reduce possibility of data race, which is annoying issue in concurrent environment.
+\acrshort{pxblat} also implement ergonomic features consisting of checking and waiting if server is ready for alignment, retrying different port if current port is occupied, using existing server if server is already started in current computing node.
+All these features have been tested and work fine in concurrent environment.
+Compared to \emph{gfServer},  \acrshort{pxblat} reimplement it using multiple threads model, which enables processing multiple client request concurrently.
 
-PxBLAT is implemented in Python, employing ctypes, a Python library, to interface with the BLAT's C code.
-This approach enabled direct access to the functions of the BLAT program without modifying its original source code, preserving the integrity and performance of BLAT while extending its capabilities.
+Specifically, \acrshort{pxblat} provides \acrfull{api} including  \emph{Server}, \emph{Client} class and other free functions to reproduce \acrshort{blat} \acrshort{cli}.
+\emph{Server} and \emph{Client} have same utilities as \emph{gfServer} and \emph{gfClient} respectively but more flexible and efficient.
+Besides, they own ergonomic features aforementioned.
+Free functions the library provides, for example, \emph{start\_server}, \emph{query\_server}, \emph{status\_server}, \emph{fa2twobit} etc., serve as potential usage under different contexts.
+\acrshort{pxblat} also offers same but more user-friendly \acrshort{cli} as \acrshort{blat} suit.
+The library is well tested, and use type hints for all public classes and functions to ensure the quality and correctness via static analyzer.
+These type annotations also make \acrshort{pxblat} more pleasant to use inside an \acrfull{ide}, where the function signatures can be suggested and corrected automatically.
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=0.75\linewidth]{figures/pxblat.png}
+	\caption{\textbf{These are cells.}\\
+		(\textbf{A}) This is a regular figure with a legend as a caption underneath. Inset: 3X zoom. Scale bar, \SI{10}{\micro\meter}.}
+	\label{fig:pxblat}
+\end{figure*}
 
-% Library Features
-
-PxBLAT includes a range of features to enhance the user experience with BLAT:
-Seamless Integration: PxBLAT is designed to work cohesively within the Python environment, allowing the user to utilize the BLAT functions as if they were Python functions.
-It is compatible with popular Python bioinformatics libraries like Biopython and NumPy.
-Efficiency: By accessing BLAT's functionality directly from Python, PxBLAT reduces the need for system calls, improving the overall efficiency of bioinformatics pipelines that use BLAT.
-Error Handling: PxBLAT incorporates robust error handling, ensuring that BLAT-related errors are captured and communicated to the user in a Pythonic manner.
-Documentation and Examples: PxBLAT comes with comprehensive documentation and a suite of example scripts to demonstrate how to use the library effectively.
-In conclusion, the design and implementation of PxBLAT align with our goal of providing an efficient and ergonomic Python binding library for BLAT.
-The developed library unlocks new possibilities for efficient genomic analysis, especially within the context of Python-based workflows.
-
-
-\subsection*{Implementation}\label{ssec:implementation}
-
-% add generaal code usage example, introduce library api
-% Server, Client
-% and free function, start_server, stop_server, query_server, status_server, fa2twobit
-% yet another command line application:
-% pxblat server -h
-% pxblat client -h
-% pxblat fatotwobit -h
-%
-
-Type hints are provided for all public classes and functions, allowing a static analyzer such as MyPy (https://mypy-lang. org) to detect type errors ahead of runtime.
-These type annotations also make PyHMMER more pleasant to use inside an Integrated Development Environment (IDE), where the function signatures can be suggested and corrected automatically.
-
-% introduce multiple thread version server and one thread one client model,
-
-% query result will be parsed via BIO-python
 
 \section*{Results}\label{sec:results}
 
-% **IV. Evaluation and Results**
+\begin{listing}
+	\inputminted[linenos]{python}{codes/example1.py}
+	\caption{Python example}
+	\label{listing:1}
+\end{listing}
 
-% To validate PxBLAT's utility and effectiveness, we undertook a comprehensive evaluation process, assessing the library's performance, usability, and robustness.
-% A series of tests and comparative analysis were carried out to demonstrate the efficiency gains and ergonomic improvements offered by PxBLAT over standard BLAT usage.
 
-% **Performance Evaluation**
+To validate \acrshort{pxblat}'s utility and effectiveness, we undertook a comprehensive evaluation process, assessing the library's performance, usability, and robustness.
+A series of tests and comparative analysis were carried out to demonstrate the efficiency gains and ergonomic improvements offered by \acrshort{pxblat} over \acrshort{blat} usage.
+We evaluated \acrshort{pxblat}'s efficiency by comparing the execution times of identical alignment tasks performed directly using \acrshort{blat}  and via \acrshort{pxblat}.
+Our tests involved datasets of varying sizes to cover a range of typical usage scenarios.
+The results indicated a significant efficiency gain when using \acrshort{pxblat} (Figure~\hyperref[fig:pxblat]{1A}).
+In all cases, the execution time was reduced when using \acrshort{pxblat} compared to \acrshort{blat}.
+The reduction in execution time ranged from \SI{1}{\percent} to \SI{1}{\percent}, clearly demonstrating the benefits of \acrshort{pxblat} 's direct interfacing approach.
+In summary, \acrshort{pxblat}  offers tangible benefits in terms of reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
 
-% Performance is paramount when dealing with bioinformatics tools, given the size and complexity of genomic data.
-% We evaluated PxBLAT's efficiency by comparing the execution times of identical alignment tasks performed directly using BLAT and via PxBLAT.
-% Our tests involved datasets of varying sizes and complexities to cover a range of typical usage scenarios.
+Through our evaluation, we have demonstrated that \acrshort{pxblat} not only accelerates the execution of BLAT operations but also presents a user-friendly,
+pythonic interface that seamlessly integrates with existing Python-based bioinformatics workflows.
+While the current version of \acrshort{pxblat}  has demonstrated significant advantages in terms of efficiency and ergonomics, we believe that there is potential for further development and enhancement.
+\acrshort{pxblat} represents a significant contribution in this regard, offering a blend of performance and usability that stands to benefit a wide range of users.
 
-% The results indicated a significant efficiency gain when using PxBLAT.
-% In all cases, the execution time was reduced when using PxBLAT compared to standard BLAT.
-% The reduction in execution time ranged from X% to Y%, clearly demonstrating the benefits of PxBLAT's direct interfacing approach.
 
-% **Usability and Ergonomics Assessment**
+% show length distribution of fas data and show have same results
+% TODO: Benchmarking Performance <Yangyang Li>
 
-% In addition to performance, the user experience is a critical factor in the design of PxBLAT.
-% We evaluated the library's ergonomics by gathering feedback from a group of users familiar with both Python and BLAT.
-
-% Users reported that PxBLAT made the process of working with BLAT significantly more convenient and intuitive.
-% The library's Pythonic interface, its integration with other Python tools, and its comprehensive error handling were particularly appreciated.
-% This feedback affirms our design goal of not only making BLAT more efficient but also more user-friendly.
-
-% **Robustness Testing**
-
-% To assess PxBLAT's robustness, we conducted tests using edge-case scenarios and unexpected input data.
-% PxBLAT handled these conditions with grace, providing clear and useful error messages that helped in identifying and rectifying the issues.
-
-% In summary, our evaluation demonstrates that PxBLAT improves the efficiency and ergonomics of working with BLAT.
-% It offers tangible benefits in terms of reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
-
-\subsection*{PxBLAT has consistent result with BLAT}\label{ssec:pxblat-has-consistent-result-with-blat}
-
-% show length distribution of fas data
-% and show have same results
-
-\subsection*{Benchmarking Performance}\label{ssec:benchmarking-performance}
-
-% show performance with one thread one client model, compared to original command line version
-% time efficiency
+% show performance with one thread one client model, compared to original command line version time efficiency
 % threadpool can be used instead of processpool, which means do not bother wtih overhead for starting another process
 
-% add figure for benchmarking performance
-
-\subsection*{Ergonomics}\label{ssec:ergonomics}
-
-% **V. Case Studies**
-
-% To further illustrate the utility of PxBLAT, we provide case studies from two distinct bioinformatics projects.
-% These real-world applications underscore the benefits of PxBLAT and its potential to enhance genomic research workflows.
-
-% **Case Study 1: Large-Scale Genome Alignment**
-
-% The first case study comes from a project that involved large-scale genome alignment tasks.
-% Traditionally, this project used standalone BLAT for alignment tasks, facing challenges in the form of extended run times and complex integration within the larger Python-based analysis pipeline.
-%
-% With the introduction of PxBLAT, the project reported significant efficiency gains.
-% The runtime for alignments was reduced by an average of X%, greatly accelerating the overall analysis process.
-% Additionally, the Pythonic interface of PxBLAT streamlined the integration of alignment tasks into the project's analytical pipeline, resulting in a cleaner, more maintainable codebase.
-%
-% **Case Study 2: Gene Mapping in a Teaching Laboratory**
-
-% Our second case study comes from an educational setting, where students were learning gene mapping techniques.
-% Traditionally, students had difficulty understanding and using the interface of standalone BLAT, which impeded their learning process.
-
-% With PxBLAT, students found it easier to perform gene mapping tasks.
-% The Pythonic interface of PxBLAT was intuitive to the students, who were already familiar with Python.
-% Instructors reported that the error messages provided by PxBLAT were more informative, helping students understand and fix their mistakes.
-% Overall, PxBLAT was found to enhance the learning experience for students and facilitate the teaching process for instructors.
-
-% These case studies highlight the tangible benefits of PxBLAT in both research and educational contexts.
-% By improving efficiency and usability, PxBLAT can significantly enhance genomic analysis workflows.
-% Please replace the placeholders such as 'X%' with actual data or information from your case studies, and adjust the cases as needed to fit your research.
-
-
-% add code example using with context
-% with Server() as server:
-%     client = Client()
-%     client.start()
-%     ret = client.get()
-%
-% show non-blocking client usage, and present its advantage in graph
-
-% for example:
-%
-% server = Server()
-% client = Client()
-% client.start()
-% do some stuffs that consuming time and do not need query result, then get query result
-% result = client.get()
-% do other stuffs that need query result
-% close server when needs
-% server.stop()
-
-
-% mention that we can only use thread pool when doing multiple  query to accerlate our processing
-
-% As you can see (Figure \ref{fig:cells}).
-
-% full size figure is figure*
-\begin{figure*}
-	\centering
-	\includegraphics[width=0.75\linewidth]{Figures/temp.png}
-	\caption{\textbf{These are cells.}\\
-		(\textbf{A}) This is a regular figure with a legend as a caption underneath. Inset: 3X zoom. Scale bar, \SI{10}{\micro\meter}.}
-	\label{fig:cells}
-\end{figure*}
-
-It is possible to add a one-column Figure like this (Figure \ref{fig:nucleus}).
-
-% one-column size figure is figure
-\begin{figure}
-	\centering
-	\includegraphics[width=0.75\linewidth]{Figures/temp.png}
-	\caption{\textbf{This is a nucleus.}\\
-		(\textbf{A}) This is a one-column figure with a legend as a caption underneath.}
-	\label{fig:nucleus}
-\end{figure}
-
-
-\section*{Discussion}\label{sec:discussion}
-
-This is the discussion section where you wax lyrical about your findings.
-% You can put your work in the context of other published work \citep{brenner_uga:_1967}.
-
-% discuss event-based io may be applied in the future.
-
-
-% **VII. Future Work**
-
-% While the current version of PxBLAT has demonstrated significant advantages in terms of efficiency and ergonomics, we believe that there is potential for further development and enhancement.
-
-% **Extended Compatibility**: Our immediate future plan includes extending PxBLAT's compatibility to interface with additional Python libraries commonly used in bioinformatics, beyond the ones currently supported.
-% This could further streamline bioinformatics workflows, reducing the need for language switching and data conversion.
-
-% **Performance Optimization**: While PxBLAT has already shown significant performance gains, we are committed to continuous optimization.
-% We plan to explore more advanced binding techniques and optimization algorithms to further accelerate the BLAT operations.
-
-% **User Feedback and Iteration**: We also plan to institute a feedback mechanism to gain insights from the user community.
-% This iterative approach, incorporating user feedback into subsequent versions, will ensure that PxBLAT continues to evolve in line with user needs and expectations.
-
-% **Integration with Other Genomic Tools**: Finally, we plan to investigate the feasibility of extending the Pythonic interface approach to other genomic analysis tools.
-% A suite of Python binding libraries for multiple tools could transform the landscape of bioinformatics programming, making it even more accessible and efficient.
-
-% In conclusion, while PxBLAT marks a significant step forward in enhancing the interface and use of BLAT, it also sets the stage for future developments.
-% Through continuous improvement and user-focused design, we aim to further empower researchers and analysts in their exploration of genomic data.
-
-% As always, adjust this draft to align with your actual plans and potential developments.
-
-
-
-% **VIII. Conclusion**
-
-% In this study, we have presented PxBLAT, an efficient and ergonomic Python binding library for the BLAT tool.
-% Designed with the dual goals of improving performance and usability, PxBLAT leverages Python's simplicity and expressiveness to enhance the user experience with BLAT.
-
-% Through our evaluation, we have demonstrated that PxBLAT not only accelerates the execution of BLAT operations but also presents a user-friendly, Pythonic interface that seamlessly integrates with existing Python-based bioinformatics workflows.
-% Our case studies further highlight the practical benefits of PxBLAT, evidencing its potential to enhance both research and educational applications.
-
-% As the field of bioinformatics continues to expand, the need for tools that can efficiently process large genomic datasets while remaining accessible to users of varying expertise levels grows ever more critical.
-% PxBLAT represents a significant contribution in this regard, offering a blend of performance and usability that stands to benefit a wide range of users.
-
-% Looking ahead, we anticipate that PxBLAT will stimulate further development of Pythonic interfaces for bioinformatics tools.
-% As we continue to refine and expand PxBLAT based on user feedback and technological advances, we remain committed to our goal of enhancing bioinformatics programming and empowering researchers to make new discoveries.
-
-% To conclude, PxBLAT embodies a holistic approach to improving bioinformatics workflows, blending enhanced efficiency and ergonomics.
-% Its implementation serves as a testament to the power of user-focused design and performance optimization in bioinformatics tool development.
-
+% todo: mention that we can only use thread pool when doing multiple  query to accerlate our processing
 
 \section*{Acknowledgements}\label{sec:acknowledgements}
 
@@ -335,781 +135,14 @@ This is the discussion section where you wax lyrical about your findings.
 
 \section*{Data availability}\label{sec:data-availability}
 
+The \acrshort{pxblat}, along with the source code, example scripts, and comprehensive documentation, are publicly available in our GitHub repository at \url{https://github.com/cauliyang/pxblat}.
+We have also provided extensive test data, allowing users to validate the functionality and performance of \acrshort{pxblat} in their own environments.
+We welcome community contributions to the \acrshort{pxblat} project.
+We believe that the open availability of our data and code will foster collaboration and iterative improvement, in line with our vision of creating accessible, efficient tools for bioinformatics.
 
-The code is available is GitHub \href{https://github.com/cauliyang/pxblat}{PxBLAT}.
-The benchmarking dataset and code is located in  GitHub as well.
-
-% All data generated or analyzed during this study are included in this published article and its supplementary information files.
-% The PxBLAT Python binding library, along with the source code, example scripts, and comprehensive documentation, are publicly available in our GitHub repository at [insert URL here].
-% We have also provided extensive test data, allowing users to validate the functionality and performance of PxBLAT in their own environments.
-
-% The genomic datasets used for performance evaluation and case studies are available from the corresponding public databases.
-% Specific accession numbers and database URLs are listed in the Supplementary Information.
-
-% We welcome community contributions to the PxBLAT project.
-% We believe that the open availability of our data and code will foster collaboration and iterative improvement, in line with our vision of creating accessible, efficient tools for bioinformatics.
-
-
-% \section*{Reference}\label{sec:reference}
-
+\section*{Reference}\label{sec:reference}
 \bibliographystyle{bxv_abbrvnat}
 \bibliography{refs.bib}
-% \printbibliography
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

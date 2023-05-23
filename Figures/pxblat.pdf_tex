@@ -1,0 +1,119 @@
+%% Creator: Inkscape 1.2.2 (b0a84865, 2022-12-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'pxblat.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{680.31496063bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.5)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{pxblat.pdf}}%
+    \put(0.56651007,0.44913133){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Client 1}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{pxblat.pdf}}%
+    \put(0.69781761,0.45031338){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Thread 1}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{pxblat.pdf}}%
+    \put(0.69781761,0.42752387){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Thread 2}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{pxblat.pdf}}%
+    \put(0.69781761,0.38334357){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Thread N}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{pxblat.pdf}}%
+    \put(0.0786465,0.25258395){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{25}\smash{\begin{tabular}[t]{l}\textbf{Main thread}\end{tabular}}}}%
+    \put(0.07908145,0.3163613){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{25}\smash{\begin{tabular}[t]{l}\textbf{Time line}\end{tabular}}}}%
+    \put(0.07895226,0.28442313){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{25}\smash{\begin{tabular}[t]{l}\textbf{Server thread}\end{tabular}}}}%
+    \put(0.07885321,0.22064362){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{25}\smash{\begin{tabular}[t]{l}\textbf{Client thread 1}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{pxblat.pdf}}%
+    \put(0.07885321,0.18875497){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{25}\smash{\begin{tabular}[t]{l}\textbf{Client thread 2}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{pxblat.pdf}}%
+    \put(0.26684707,0.42135913){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Thread 1}\end{tabular}}}}%
+    \put(0.56651007,0.42800433){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Client 2}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{pxblat.pdf}}%
+    \put(0.56651007,0.38505103){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Client N}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{pxblat.pdf}}%
+    \put(0.17581579,0.25006135){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{start server}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{pxblat.pdf}}%
+    \put(0.2301977,0.28707256){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{prepare index}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{pxblat.pdf}}%
+    \put(0.25186828,0.24996929){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{do some stuff}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{pxblat.pdf}}%
+    \put(0.33968875,0.2513539){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ query}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{pxblat.pdf}}%
+    \put(0.36896226,0.21715151){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ send request}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{pxblat.pdf}}%
+    \put(0.39121195,0.24996929){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ do some stuff}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{pxblat.pdf}}%
+    \put(0.46881151,0.25002282){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ query}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{pxblat.pdf}}%
+    \put(0.47975464,0.18906218){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ send request}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{pxblat.pdf}}%
+    \put(0.49685256,0.28694185){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{wait and response for client request}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{pxblat.pdf}}%
+    \put(0.55488383,0.25066331){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ get result from client 1}\\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=19]{pxblat.pdf}}%
+    \put(0.65866178,0.25002282){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ block query }\\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=20]{pxblat.pdf}}%
+    \put(0.73297799,0.25066331){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ get result from client 2}\\\end{tabular}}}}%
+    \put(0.07228426,0.46688188){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{A}\end{tabular}}}}%
+    \put(0.50427453,0.46688188){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{B}\end{tabular}}}}%
+    \put(0.06718911,0.34361827){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{C}\end{tabular}}}}%
+    \put(0.26657489,0.36313184){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{gfServer}\end{tabular}}}}%
+    \put(0.68684991,0.36223075){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{PxBLAT Server}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{pxblat.pdf}}%
+    \put(0.50313304,0.25002282){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{do some stuff}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{pxblat.pdf}}%
+    \put(0.57021166,0.21650359){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{  return result}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{pxblat.pdf}}%
+    \put(0.75021623,0.18906218){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{ return result}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=24]{pxblat.pdf}}%
+    \put(0.13967989,0.44913133){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Client 1}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=25]{pxblat.pdf}}%
+    \put(0.13967989,0.42800433){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Client 2}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=26]{pxblat.pdf}}%
+    \put(0.13967989,0.38505103){\color[rgb]{0,0,0}\transparent{0.944444}\makebox(0,0)[lt]{\lineheight{40}\smash{\begin{tabular}[t]{l}\textbf{Client N}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=27]{pxblat.pdf}}%
+  \end{picture}%
+\endgroup%
