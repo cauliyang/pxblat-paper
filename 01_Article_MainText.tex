@@ -29,6 +29,28 @@
 
 \section*{Introduction}\label{sec:introduction}
 
+
+% % NOTE: Pyblat <05-08-23, Yangyang Li>
+
+% Realignment is the process that mapping certain sequence to reference since the alignment result getting from aligner may be not accurate.
+% We want to get precise alignment result  by realignment.
+% Blat, which is realignment tool provided by UCSC,  aims for mapping sequences to reference.
+% It also provides another version of blat that provide two separate tools.
+% The two tools can start a server based on certain reference first and then query sequence toward sever as long as the server is ready.
+% This method achieve huge performance improvement compared to original blat version.
+% Also, Performance-aware algorithm  will need high efficient strategy to realignment.
+% The server version of blat is a good choice.
+% However, the UCSC only provides command line versions, which is not useful for developing  algorithm involving realignment.
+% That means you need to use the blat thought system.
+% Meanwhile, Getting the information from server is not  trivial as you need to communicate with log file of server.
+% Hence, we need to check the log file consistently, which is mistakeful and unefficient.
+% We develop a Python bindings library PyBlat based on blat and provide richer features for realignment.
+% PyBlat is developed in terms of blat source code that implemented by C.
+% We create Cpp version  for related functions and then use pybind11 to bind cpp code to python code.
+% Besides, the library will not abort due to error from c or cpp code.
+% Pyblat do not  generate any intermediate files and follow pythonic coding style.
+
+
 The continual advancement of genome sequencing technologies has led to an exponential increase in available genomic data.
 Tools to analyze and manipulate these data have become critically important in both research and clinical contexts.
 \acrfull{blat}~\citep{kent2002blat} is a standout in the bioinformatics field for its capability to perform rapid genome sequence alignments.
@@ -37,8 +59,8 @@ Despite its widespread use and acceptance in the bioinformatics community, inter
 Since \acrshort{blat} is implemented by C programming language and only provides a variety of utilities with a \acrfull{cli}.
 So far, we lack a holistic approach to enhance both the performance and the usability of BLAT.
 
-On the other hand, python's rise as a favored programming language in bioinformatics is well-documented, due to its ease of use, extensive libraries, and versatility~\citep{perkel2015programming}.
-Various binding libraries have been developed to extend python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
+On the other hand, Python's rise as a favored programming language in bioinformatics is well-documented, due to its ease of use, extensive libraries, and versatility~\citep{perkel2015programming}.
+Various binding libraries have been developed to extend Python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
 For instance, Biopython~\citep{cock2009biopython}, one of the most prominent bioinformatics libraries, provides interfaces to tools like \acrshort{blast} ~\citep{altschul1990basic}, Clustal~\citep{higgins1988clustal}, and others.
 Nonetheless, to date, no comprehensive Python binding library for BLAT has been developed.
 
@@ -48,7 +70,12 @@ By improving the usability of \acrshort{blat}  and seamless integration within P
 We provide evidence of its performance improvements, demonstrate its ergonomic advantages, and discuss its potential applications in genomic research.
 The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for BLAT, addressing both its efficiency and ergonomic concerns.
 
-\section*{Implementation}\label{sec:implementation}
+
+% TODO: mention pblat and do some comparision from usage compective <05-28-23, Yangyang Li>
+
+\section{Approach}\label{sec:approach}
+
+\subsection*{Implementation}\label{ssec:implementation}
 
 % introduce features of pxblat
 % 1. no intermidiate files, all in memory
@@ -105,7 +132,7 @@ To validate \acrshort{pxblat}'s utility and effectiveness, we undertook a compre
 A series of tests and comparative analysis were carried out to demonstrate the efficiency gains and ergonomic improvements offered by \acrshort{pxblat} over \acrshort{blat} usage.
 We evaluated \acrshort{pxblat}'s efficiency by comparing the execution times of identical alignment tasks performed directly using \acrshort{blat}  and via \acrshort{pxblat}.
 Our tests involved datasets of varying sizes to cover a range of typical usage scenarios.
-The results indicated a significant efficiency gain when using \acrshort{pxblat} (Figure~\hyperref[fig:pxblat]{1A}).
+The results indicated a significant efficiency gain when using \acrshort{pxblat} (Figure~\hyperref[fig:pxblat]{1D}).
 In all cases, the execution time was reduced when using \acrshort{pxblat} compared to \acrshort{blat}.
 The reduction in execution time ranged from \SI{1}{\percent} to \SI{1}{\percent}, clearly demonstrating the benefits of \acrshort{pxblat} 's direct interfacing approach.
 In summary, \acrshort{pxblat}  offers tangible benefits in terms of reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
@@ -114,6 +141,12 @@ Through our evaluation, we have demonstrated that \acrshort{pxblat} not only acc
 pythonic interface that seamlessly integrates with existing Python-based bioinformatics workflows.
 While the current version of \acrshort{pxblat}  has demonstrated significant advantages in terms of efficiency and ergonomics, we believe that there is potential for further development and enhancement.
 \acrshort{pxblat} represents a significant contribution in this regard, offering a blend of performance and usability that stands to benefit a wide range of users.
+
+% Even though python cannot use multiple threads truly due to \acrfull{gil},.
+For gaining the power of concurrent in python, we commonly launch processes due to \acrfull{gil}.
+The overhead of launching process is not trivial as forking a thread, but multiple threads model still empower IO operations
+Compared to \acrshort{blat}, \acrshort{pxblat} benefit the characteristics to speed up multiple clients request spontaneously (Figure~\hyperref[fig:pxblat]{1A} and ~\hyperref[fig:pxblat]{1B}) since we reimplement multithreaded server in Cpp.
+\acrshort{gil} does not exist in Cpp.
 
 
 % show length distribution of fas data and show have same results
@@ -143,6 +176,22 @@ We believe that the open availability of our data and code will foster collabora
 \section*{Reference}\label{sec:reference}
 \bibliographystyle{bxv_abbrvnat}
 \bibliography{refs.bib}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
