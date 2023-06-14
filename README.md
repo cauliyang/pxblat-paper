@@ -1,4 +1,5 @@
-# manuscript-templates
+# PxBLAT manuscript
+
 LaTeX templates for manuscripts (switchable bioRxiv preprint and journal submission templates), for use on Overleaf.
 
 ## Basic idea
@@ -20,7 +21,6 @@ There are optional Supplementary tex files that can also be edited.
 If they are not required, comment the appropriate lines in `00_Article_Merge.tex`.
 
 Tested on Overleaf - TeXLive 2020 with pdfLaTeX compiler.
-
 
 ## Contributions
 
