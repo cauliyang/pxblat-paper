@@ -466,6 +466,10 @@
 \RequirePackage{booktabs}
 \RequirePackage{minted}
 
+\sisetup{
+	round-mode = places,
+	round-precision = 2
+}%
 
 %% Page headers and footers
 %%

@@ -12,6 +12,7 @@
 
 \maketitle
 
+
 \begin{abstract}
 	\gls{pxblat} provides an ergonomic and efficient Python binding library for \gls{blat}, designed to enhance the user experience and performance of genomic analysis tasks.
 	By providing a pythonic interface to \gls{blat}, \gls{pxblat} simplifies the usage of \gls{blat}, allowing incorporating its functionality directly into their Python-based bioinformatics workflows.
@@ -29,7 +30,6 @@
 
 \section*{Introduction}\label{sec:introduction}
 
-
 % Realig nment is the process that mapping certain sequence to reference since the alignment result getting from aligner may be not accurate.
 % We want to get precise alignment result  by realignment.
 % Blat, which is realignment tool provided by UCSC,  aims for mapping sequences to reference.
@@ -46,6 +46,10 @@
 % Besides, the library will not abort due to error from c or cpp code.
 % Pyblat do not  generate any intermediate files and follow pythonic coding style.
 
+
+% NOTE:  type hint: <Yangyang Li yangyang.li@northwestern.edu>
+% 1. Strong type , catch errors early, safe to use
+% 2. develop friendly
 
 The continual advancement of genome sequencing technologies has led to an exponential increase in available genomic data.
 Tools to analyze and manipulate these data have become critically important in both research and clinical contexts.
@@ -66,16 +70,11 @@ Here we propose \gls{pxblat}, a modern Python library designed to streamline and
 Hence, \gls{pxblat} opens up new possibilities for efficient genomic analysis.
 The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for \gls{blat}, addressing both its efficiency and ergonomic concerns.
 
-\section*{Approach}\label{sec:approach}
-
-\subsection*{Features}\label{ssec:features}
-
-\subsection*{Implementation}\label{ssec:implementation}
-
-\subsection*{Validation}\label{ssec:validation}
+\section*{Implementation}\label{sec:implementation}
 
 
 The design of \gls{pxblat} follows the pythonic principles of readability and simplicity.
+
 It is built to be intuitive, reducing the learning curve for users familiar with Python.
 In line with this, we focused on minimizing the complexity while maximizing the usability and performance.
 Hence, We employ existing C codebase and reimplement utilities of \(\mathtt{\gls{blat}}\left(\mathtt{V}37.1\right)\) suit  including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \gls{cli} using Cpp programming language~\citep{kent2002blat}.
@@ -103,29 +102,10 @@ These type annotations also make \gls{pxblat} more pleasant to use inside an \gl
 The focus on ergonomics has resulted in a seamless interaction experience between the user and the tool, making PxBLAT a preferred choice for sequence alignment tasks
 
 
-\begin{table}[]
-	\caption{\gls{api} List}
-	\label{tab:api}
-	\centering
-	\begin{tabular}{@{}ll@{}}
-		\toprule
-		\gls{api} & DES \\ \midrule
-		          &     \\
-		          &     \\
-		          &     \\
-		          &     \\
-		          &     \\ \bottomrule
-	\end{tabular}
-\end{table}
-
-
-\section*{Usage}\label{sec:usage}
-
-
 \begin{listing}
 	\inputminted[linenos]{python}{codes/example1.py}
-	\caption{Python example}
-	\label{listing:1}
+	\caption{Code Example}
+	\label{listing:example}
 \end{listing}
 
 
@@ -136,12 +116,29 @@ Our tests involved datasets of varying sizes to cover a range of typical usage s
 % The reduction in execution time ranged from \SI{1}{\percent} to \SI{1}{\percent}, clearly demonstrating the benefits of \gls{pxblat} 's direct interfacing approach.
 % In summary, \gls{pxblat}  offers tangible benefits in terms of reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
 
+\section*{Result}\label{sec:result}
 
+\begin{table}
+	\centering
+	\caption{Performance Evaluation}
+	\label{tab:performance-evaluation}
+	\begin{tabular}{lSSSS}
+		\toprule
+		Data Set        & {Samples} & {BLAT (Sec.)} & {PxBLAT (Sec.)} & {Speedup} \\
+		\midrule
+		benchmark/fas/1 & 200       & 61.4011       & 50.4143         & 1.2179    \\
+		benchmark/fas/2 & 200       & 61.6994       & 51.0984         & 1.2075    \\
+		benchmark/fas/3 & 200       & 55.3351       & 46.4404         & 1.1915    \\
+		benchmark/fas/4 & 200       & 56.9760       & 47.7234         & 1.1939    \\
+		benchmark/fas/5 & 200       & 54.5457       & 46.4391         & 1.1746    \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
-\section*{Conclusion}\label{sec:conclusion}
 
 Through our evaluation, we have demonstrated that \gls{pxblat} not only accelerates the execution of BLAT operations but also presents a user-friendly,
 pythonic interface that seamlessly integrates with existing Python-based bioinformatics workflows.
+
 While the current version of \gls{pxblat}  has demonstrated significant advantages in terms of efficiency and ergonomics, we believe that there is potential for further development and enhancement.
 \gls{pxblat} represents a significant contribution in this regard, offering a blend of performance and usability that stands to benefit a wide range of users.
 
@@ -151,7 +148,6 @@ The overhead of launching process is not trivial as forking a thread, but multip
 % Compared to \gls{blat}, \gls{pxblat} benefit the characteristics to speed up multiple clients request spontaneously (Figure~\hyperref[fig:pxblat]{1A} and ~\hyperref[fig:pxblat]{1B}) since we reimplement multithreaded server in Cpp.
 \gls{gil} does not exist in Cpp.
 
-
 \section*{Acknowledgements}\label{sec:acknowledgements}
 
 Special thanks to the testers and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality.
@@ -160,6 +156,7 @@ We look forward to continuing to contribute to the advancement of bioinformatics
 
 \section*{Conflict of interest}\label{sec:conflict-of-interest}
 
+None declared.
 
 \section*{Funding}\label{sec:funding}
 
@@ -170,6 +167,8 @@ The \gls{pxblat}, along with the source code and comprehensive documentation, ar
 We have also provided extensive test data, allowing users to validate the functionality and performance of \gls{pxblat} in own environments.
 We welcome community contributions to the \gls{pxblat} project.
 We believe that the open availability of our data and code will foster collaboration and iterative improvement, in line with our vision of creating accessible, efficient tools for bioinformatics.
+
+\section*{Code availability}\label{sec:code-availability}
 
 \section*{Reference}\label{sec:reference}
 \bibliographystyle{bxv_abbrvnat}

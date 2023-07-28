@@ -1,4 +1,3 @@
-
 \onecolumn % go back to one column
 \fancyhead{} % make sure we get no headers
 \renewcommand{\floatpagefraction}{0.1}
@@ -9,9 +8,11 @@
 \captionsetup*{format=largeformat} % make figure legend slightly larger than in the paper
 \setcounter{figure}{0} % reset figure counter for Supp. Figures
 \setcounter{equation}{0} % reset equation counter for Supp. Equations
-%\setcounter{page}{1} % reset page count
+\setcounter{table}{0} % reset equation counter for Supp. Equations
+\setcounter{page}{1} % reset page count
 \makeatletter
 \renewcommand{\thefigure}{S\@arabic\c@figure} % make Figure legend start with Figure S
+\renewcommand{\thetable}{S\@arabic\c@table} % make Figure legend start with Figure S
 \makeatother
 \def\theequation{S\arabic{equation}}
 
@@ -22,7 +23,7 @@
 
 \begin{figure*}[!ht]
 	\centering
-	\includegraphics[width=0.75\linewidth]{figures/temp.png}
+	\includegraphics[width=\linewidth]{figures/fas_len.eps}
 	\caption{\textbf{This is an endosome.}\\
 		(\textbf{A}) This is a supplementary figure shown as a two-column image with a legend underneath.}
 	\label{suppfig:endosome}
@@ -30,35 +31,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\input{tables/cmp1}
+\input{tables/cmp2}
+\input{tables/cmp3}
+\input{tables/cmp4}
+\input{tables/cmp5}
