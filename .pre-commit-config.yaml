@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/jonasbb/pre-commit-latex-hooks
-    rev: v1.4.2
+    rev: v1.4.3
     hooks:
       - id: american-eg-ie
       - id: cleveref-capitalization
@@ -25,3 +25,8 @@ repos:
       - id: check-yaml
       - id: trailing-whitespace
         files: ".*\\.(?:tex|py)$"
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.16.1
+    hooks:
+      - id: typos
+        # exclude: "extc|svg|psl|CHANGELOG"
