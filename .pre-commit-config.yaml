@@ -29,4 +29,4 @@ repos:
     rev: v1.16.1
     hooks:
       - id: typos
-        # exclude: "extc|svg|psl|CHANGELOG"
+        exclude: ".git|Makefile|bst"

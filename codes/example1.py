@@ -16,7 +16,7 @@ with Server(
     two_bit="ref/reference.2bit",
     option=server_option
 ) as server:
-    work()  # work that consums time
+    work()  # work that consumes time
     server.wait_for_ready()
     result1 = client.query("ATCG")
     result2 = client.query("AtcG")
