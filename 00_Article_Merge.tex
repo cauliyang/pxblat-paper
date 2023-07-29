@@ -2,7 +2,11 @@
 % \documentclass[twocolumn]{bioRxiv}
 \documentclass[submit]{bioRxiv}
 \renewcommand\familydefault{\sfdefault}
+
+% define new commands
 \newcommand{\mycaption}[2]{\caption[#1]{\textbar\, \textbf{#1.} #2}}
+\newcommand\pcref[1]{(\cref{#1})}
+\newcommand\pCref[1]{(\Cref{#1})}
 
 \makeglossaries
 \input{glossary}
@@ -11,5 +15,6 @@
 
 \include{01_Article_MainText}
 \include{02_Article_Supplementary}
+
 
 \end{document}

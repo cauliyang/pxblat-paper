@@ -16,19 +16,21 @@
 \makeatother
 \def\theequation{S\arabic{equation}}
 
-%  MAIN TEXT
-
 \newpage
 \section*{Supplementary Information}\label{sec:supplementary-information}
 
 \begin{figure*}[!ht]
 	\centering
 	\includegraphics[width=\linewidth]{figures/fas_len.eps}
-	\caption{\textbf{This is an endosome.}\\
-		(\textbf{A}) This is a supplementary figure shown as a two-column image with a legend underneath.}
-	\label{suppfig:endosome}
+	\mycaption{Distribution of Sequence Length}{The dataset for testing and benchmarking. Each group contains \num{200} fasta samples, and each fasta sample has one sequence.
+		(\textbf{a}) The distribution of length in group \num[round-mode=places, round-precision=0]{1}
+		(\textbf{b}) The distribution of length in group \num[round-mode=places, round-precision=0]{2}
+		(\textbf{c}) The distribution of length in group \num[round-mode=places, round-precision=0]{3}
+		(\textbf{d}) The distribution of length in group \num[round-mode=places, round-precision=0]{4}
+		(\textbf{e}) The distribution of length in group \num[round-mode=places, round-precision=0]{5}
+	}
+	\label{suppfig:fas-len}
 \end{figure*}
-
 
 
 \input{tables/cmp1}

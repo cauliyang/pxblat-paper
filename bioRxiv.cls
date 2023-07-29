@@ -96,7 +96,7 @@
 
 \PassOptionsToPackage{hyphens}{url}
 %% Hyperlinking
-\RequirePackage[colorlinks=true, citecolor=blue, urlcolor=blue, linkcolor=black]{hyperref}
+\RequirePackage[colorlinks=true, citecolor=blue, urlcolor=blue, linkcolor=blue]{hyperref}
 \RequirePackage{orcidlink}
 
 %% Ref to Sup
