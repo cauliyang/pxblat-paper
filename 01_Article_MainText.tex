@@ -53,7 +53,7 @@ The design of \gls{pxblat} follows the principles of readability and simplicity,
 In line with this, we have concentrated on minimizing the complexity while maximizing the usability and performance.
 The original codebase of \gls{blat} is included by codebase of \gls{ucsc}.
 We segregate the implementation of \gls{blat} from the codebase of \gls{ucsc} and minimize its dependencies.
-Utilizing existing C codebase and reimplement utilities of \gls{blat}\(\left(\mathtt{V}37.1\right)\) suit  including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \gls{cli} using C\texttt{++} programming language~\citep{kent2002blat}.
+Utilizing existing C codebase and reimplement utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) suit  including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \gls{cli} using C\texttt{++} programming language~\citep{kent2002blat}.
 Subsequently, we integrate the current C\texttt{++} code and develop \gls{pxblat} via Pybind11~\citep{pybind11}.
 The approach facilitated direct interaction with the functions of the \gls{blat} without modifying its original source code, thus preserving the integrity and performance of \gls{blat} while broadening its capabilities.
 
@@ -86,11 +86,11 @@ The \gls{cli} includes completion for different shells, improving versatility.
 
 \section*{Result}\label{sec:result}
 
-The result and performance of \gls{pxblat} are benchmarked against \gls{blat}\(\left(\mathtt{V}37.1\right)\) based on dataset including \num{1000} FASTA Files.
-The dataset, which consist of five groups,  is sampled from chromosome \num{20} of Human Genome (hg38), and each sample includes one sequence.
-The dataset including varying sizes to cover a range of typical usage scenarios.
+The result and performance of \gls{pxblat} are benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) based on dataset including \num{1000} FASTA Files.
+The dataset, which consists of five groups,  is sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
+The dataset includes varying sizes to cover a range of typical usage scenarios.
 The length of each sequence ranges from \num{1000} to \num{3000}~\pCref{suppfig:fas-len}.
-The result bechmarking ensure the correctness of \gls{pxblat}~\pCref{supptab:cmp1}
+The result benchmarking ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}
 
 \begin{table*}
 	\centering
@@ -109,17 +109,17 @@ The result bechmarking ensure the correctness of \gls{pxblat}~\pCref{supptab:cmp
 	\end{tabular}
 \end{table*}
 
-The performance benchmarking is conducted on Apple M1 Pro with macOS 13.4.1 22F82 arm64.
-We use system call to launch \gls{blat} and \emph{time} library to measure the execution time.
-Generally, \gls{pxblat} gains \SI[per-mode=symbol,round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
+The performance benchmarking is conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
+We use the system call to launch \gls{blat} and the \emph{time} library to measure the execution time.
+Generally, \gls{pxblat} gains \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
 In summary, \gls{pxblat}  offers tangible benefits according to reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
 
 
 \section*{Acknowledgements}\label{sec:acknowledgements}
 
-Special thanks to team who maintain \gls{ucsc} codebase and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality;
+Special thanks to the team who maintain \gls{ucsc} codebase and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality;
 We are grateful for the generous support from our institution and funding bodies, which made this project possible.
-We look forward to continuing to contribute to the advancement.
+We look forward to continuing to contribute to its advancement.
 
 \section*{Conflict of interest}\label{sec:conflict-of-interest}
 
@@ -130,12 +130,12 @@ None declared.
 
 \section*{Data availability}\label{sec:data-availability}
 
-The dataset for benchmarking and testing is available at GitHub repository {\url{https://github.com/cauliyang/pxblat}.
-The path of dataset is \emph{benchmark/fas}.
+The dataset for benchmarking and testing is available at the GitHub repository {\url{https://github.com/cauliyang/pxblat}.
+The path of the dataset is \emph{benchmark/fas}.
 
 \section*{Code availability}\label{sec:code-availability}
 
-The \gls{pxblat}, along with the source code, is publicly available in GitHub repository at \url{https://github.com/cauliyang/pxblat}.
+The \gls{pxblat}, along with the source code, is publicly available in the GitHub repository at \url{https://github.com/cauliyang/pxblat}.
 The documentation is available at ReadtheDocs \url{https://pxblat.readthedocs.io/en/latest/}.
 The script for benchmarking is available at \emph{tests/test\_result.py} in the repository.
 
