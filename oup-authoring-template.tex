@@ -58,6 +58,34 @@
 \theoremstyle{thmstylethree}%
 \newtheorem{definition}{Definition}
 
+%% add custom package
+\usepackage[detect-all=true]{siunitx}
+\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
+\DeclareSIUnit\Molar{\textsc{m}}
+\DeclareSIUnit\gee{\textit{g}}
+\DeclareSIUnit\Units{\textnormal{U}}
+\DeclareSIUnit\rpm{\textnormal{rpm}}
+\DeclareSIUnit\pixel{\textnormal{px}}
+\DeclareSIUnit\electron{\textnormal{e\textsuperscript{--}}}
+\sisetup{
+	round-mode = places,
+	round-precision = 2
+}%
+
+
+
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage[acronym, style=index, shortcuts]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+% define new commands
+\newcommand{\mycaption}[2]{\caption[#1]{\textbar\, \textbf{#1.} #2}}
+\newcommand\pcref[1]{(\ref{#1})}
+\newcommand\pCref[1]{(\ref{#1})}
+
+\makeglossaries
+\input{glossary}
+
 \begin{document}
 
 \journaltitle{Journal Title Here}
@@ -71,22 +99,22 @@
 
 %\subtitle{Subject Section}
 
-\title[Short Article Title]{Article Title}
+\title[Short Article Title]{PxBLAT: An Ergonomics and Efficient Python Binding Library for BLAT}
 
-\author[1,$\ast$]{First Author}
-\author[2]{Second Author}
-\author[3]{Third Author}
-\author[3]{Fourth Author}
-\author[4]{Fifth Author\ORCID{0000-0000-0000-0000}}
+\author[1]{Yangyang Li\ORCID{0000-0001-8224-1067}}
+% \author[2]{Second Author}
+% \author[3]{Third Author}
+% \author[3]{Fourth Author}
+\author[1,$\ast$]{Rendong Yang\ORCID{0000-0000-0000-0000}}
 
-\authormark{Author Name et al.}
+\authormark{Yangyang et al.}
 
-\address[1]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
-\address[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
-\address[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
-\address[4]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
+\address[1]{\orgdiv{Department of Urology}, \orgname{Northwestern University, Feinberg School of Medicine}, \orgaddress{\street{420 E. Superior St.}, \postcode{60611}, \state{IL}, \country{US}}}
+% \address[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
+% \address[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
+% \address[4]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \postcode{Postcode}, \state{State}, \country{Country}}}
 
-\corresp[$\ast$]{Corresponding author. \href{email:email-id.com}{email-id.com}}
+\corresp[$\ast$]{Corresponding author. \href{email:rendong.yang@northwestern.edu}{rendong.yang@northwestern.edu}}
 
 \received{Date}{0}{Year}
 \revised{Date}{0}{Year}
@@ -94,19 +122,17 @@
 
 %\editor{Associate Editor: Name}
 
-%\abstract{
-%\textbf{Motivation:} .\\
-%\textbf{Results:} .\\
-%\textbf{Availability:} .\\
-%\textbf{Contact:} \href{name@email.com}{name@email.com}\\
-%\textbf{Supplementary information:} Supplementary data are available at \textit{Journal Name}
-%online.}
+\abstract{
+	\textbf{Summary} .\\
+	\textbf{Availability:} .\\
+	\textbf{Supplementary information:} Supplementary data are available at \textit{Journal Name}
+	online.}
 
-\abstract{Abstracts must be able to stand alone and so cannot contain citations to
-	the paper's references, equations, etc. An abstract must consist of a single
-	paragraph and be concise. Because of online formatting, abstracts must appear
-	as plain as possible.}
-\keywords{keyword1, Keyword2, Keyword3, Keyword4}
+% \abstract{Abstracts must be able to stand alone and so cannot contain citations to
+% 	the paper's references, equations, etc. An abstract must consist of a single
+% 	paragraph and be concise. Because of online formatting, abstracts must appear
+% 	as plain as possible.}
+% \keywords{keyword1, Keyword2, Keyword3, Keyword4}
 
 % \boxedtext{
 % \begin{itemize}
@@ -119,41 +145,96 @@
 
 
 \section{Introduction}
-The introduction introduces the context and summarizes the manuscript. It is importantly to clearly state the contributions
-of this piece of work. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+The continual advancement of genome sequencing technologies has led to an exponential increase in available genomic data.
+Tools to analyze and manipulate these data have become critically important in both research and clinical contexts.
+\gls{blat}~\citep{kent2002blat} is a standout in the bioinformatics field for its capability to perform rapid genome sequence alignments.
+It offers a faster alternative to the \gls{blast}~\citep{altschul1990basic} for aligning DNA sequences to the human genome~\citep{kent2002blat}.
+Despite its widespread use and acceptance in the bioinformatics community, interfacing with BLAT can present challenges.
+\gls{blat} is implemented in the C language and only provides utilities with \glspl{cli}, which makes it inconvenient into integrate \gls{blat} to a Python project.
+That means \gls{blat} triggers system calls and data conversions that cause significant overhead when used in Python project.
+So far, we lack a holistic approach to enhancing the usability of \gls{blat}.
+
+The rise of Python as a favored programming language in bioinformatics is well documented due to its ease of use, extensive libraries, and versatility~\cite{perkel2015programming}.
+Diverse libraries have been developed to extend Python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
+For instance, Biopython~\citep{cock2009biopython}, one of the most prominent bioinformatics libraries, provides interfaces to tools like \gls{blast}~\citep{altschul1990basic} and Clustal~\citep{higgins1988clustal}.
+Nonetheless, to date, no comprehensive Python library for \gls{blat} has been developed.
+In this paper, we propose \gls{pxblat}, a Python library designed to streamline and enhance the interaction with \gls{blat}, thereby making it more efficient and ergonomic.
+It enables one to employ \gls{blat} programmatically and integrate it  seamlessly within novel algorithms or analytical pipelines.
+\gls{pxblat} serves as a bridge, bringing the high-performance capabilities of \gls{blat} into the Python environment while maintaining reproducibility.
+Hence, \gls{pxblat} would open up new possibilities for efficient genomic analysis.
+The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for \gls{blat}, addressing both its efficiency and ergonomic concerns.
 
 This is an example of a new parapgraph with a numbered footnote\footnote{\url{https://data.gov.uk/}} and a second footnote marker.\footnote{Example of footnote text.}
 
+\section{Implementation}\label{sec:implementation}
+
+The design of \gls{pxblat} adheres to the principles of readability and simplicity, aiming for an intuitive user experience that diminishes the learning curve.
+To minimize complexity and maximize usability and performance, we extract the implementation of \gls{blat} from the codebase of the \gls{ucsc}, reducing dependencies.
+We retain the original C codebase, and reimplement the utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \gls{cli}, using the C\texttt{++} programming language~\citep{kent2002blat}.
+Subsequently, we integrate the current C\texttt{++} code and develop \gls{pxblat} via Pybind11~\citep{pybind11}.
+The approach facilitated direct interaction with the functions of the \gls{blat} without modifying its original source code, thus preserving the integrity and performance of the \gls{blat} while broadening its capabilities.
+
+The query result of \gls{pxblat} conforms to the \emph{QueryResult} class of Biopython~\citep{cock2009biopython}, enabling  manipulation of the query result using Biopython features~\pCref{listing:example}.
+Furthermore, \gls{pxblat} eliminates the need for intermediate files, allowing all operations to be executed in memory.
+This eradicates the common obstacle of data conversion into specific formats, enabling users to focus more on the core sequence alignment task.
+Input and output files have been made optional, offering more flexible choices.
+The use of system calls, though functional, can induce latency and create performance bottlenecks.
+\gls{pxblat} reduces the need for system calls, thereby improving efficiency~\pCref{tab:performance-evaluation}.
+Moreover, \gls{pxblat} allows for the retrieval of server status without manipulating log files, a process that can be troublesome in concurrent environments.
+The library incorporates ergonomic features such as checking and waiting for server readiness for alignment, retrying different ports if the current one is occupied, and using an existing server if one has already been started.
+
+We provide a variety of examples and documentation to help the user get started~\pCref{listing:example}.
+Specifically, \gls{pxblat} provides \glspl{api} including Class \emph{Server}, \emph{Client}, and other free functions to reproduce the \gls{blat} suit.
+Class \emph{Server} and \emph{Client} have the same utilities as \gls{cli} \emph{gfServer} and \emph{gfClient}, respectively, but with greater flexibility.
+Free functions, for example, \emph{start\_server}, \emph{query\_server}, \emph{status\_server}, \emph{fa2twobit}, \emph{twobit2fa}, etc., serve as potential usage in different contexts.
+The library has been tested and developed with \gls{ci} and \gls{cd} to ensure code quality.
+It uses type annotations for public classes and functions to guarantee quality and correctness via a type checker and static analyzer.
+The type annotations also make \gls{pxblat} more user-friendly in developing environments, where the function signatures can be suggested and corrected automatically.
+Besides, \gls{pxblat} contains \glspl{cli} implemented by its \gls{api}.
+The \gls{cli} includes completion for different shells, improving versatility.
+
+\begin{listing}
+	\inputminted[linenos, breaklines]{python}{codes/example1.py}
+	\mycaption{\gls{api} Example}{The code snippet shows how to use \gls{api} of \gls{pxblat},
+		and the query result can be iterated. More code examples can be found at \url{https://pxblat.readthedocs.io/en}}
+	\label{listing:example}
+\end{listing}
 
 
-\section{This is an example for first level head - section head}\label{sec2}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum (refer Section~\ref{sec5}).
+\section{Result}\label{sec:result}
 
-\subsection{This is an example for second level head - subsection head}\label{subsec1}
+The result and performance of \gls{pxblat} are benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) using a dataset of \num[round-mode=places, round-precision=0]{1000} FASTA Files.
+The dataset, which consists of five groups, is sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
+The dataset includes varying sizes to cover a range of typical usage scenarios.
+The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} to \num[round-mode=places, round-precision=0]{3000}~\pCref{suppfig:fas-len}.
+We summarize \glspl{hsp} of all hits in each sample using \gls{blat} and \gls{pxblat} and compare the results.
+The result of benchmarking ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\begin{table*}
+	\centering
+	\caption{Performance  Benchmarking}
+	\label{tab:performance-evaluation}
+	\begin{tabular}{lSSSS}
+		\toprule
+		Data Group      & {Samples (No.)} & {BLAT (Sec.)} & {PxBLAT (Sec.)} & {Speedup} \\
+		\midrule
+		benchmark/fas/1 & 200             & 61.4011       & 50.4143         & 1.2179    \\
+		benchmark/fas/2 & 200             & 61.6994       & 51.0984         & 1.2075    \\
+		benchmark/fas/3 & 200             & 55.3351       & 46.4404         & 1.1915    \\
+		benchmark/fas/4 & 200             & 56.9760       & 47.7234         & 1.1939    \\
+		benchmark/fas/5 & 200             & 54.5457       & 46.4391         & 1.1746    \\
+		\bottomrule
+	\end{tabular}
+\end{table*}
 
-\subsubsection{This is an example for third level head - subsubsection head}\label{subsubsec1}
+The benchmarking is conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
+We use system calls to launch \gls{blat} and the \emph{time} library to measure the execution time.
+Generally, \gls{pxblat} gains \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
+In summary, \gls{pxblat}  offers tangible benefits according to reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. %Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\paragraph{This is an example for fourth level head - paragraph head}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\section{This is an example for first level head}\label{sec3}
-
-\subsection{This is an example for second level head - subsection head}\label{subsec2}
-
-\subsubsection{This is an example for third level head - subsubsection head}\label{subsubsec2}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\paragraph{This is an example for fourth level head - paragraph head}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
 \section{Equations}\label{sec4}
@@ -855,6 +936,12 @@ Must include all authors, identified by initials, for example:
 S.R. and D.A. conceived the experiment(s),  S.R. conducted the experiment(s), S.R. and D.A. analysed the results.  S.R. and D.A. wrote and reviewed the manuscript.
 
 \section{Acknowledgments}
+
+Special thanks to the team who maintain the \gls{ucsc} codebase and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality.
+We are grateful for the generous support from our team, institution and funding bodies, which made this project possible.
+We look forward to continuing to contribute to its advancement.
+
+
 The authors thank the anonymous reviewers for their valuable suggestions. This work is supported in part by funds from the National Science Foundation (NSF: \# 1636933 and \# 1920920).
 
 
