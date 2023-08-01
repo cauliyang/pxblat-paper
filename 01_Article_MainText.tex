@@ -14,9 +14,8 @@
 \begin{abstract}
 	\textbf{Summary:}
 	We introduce \gls{pxblat}, a Python library designed to enhance usability and efficiency in interacting with the \gls{blat}.
-	\gls{pxblat} offers an intuitive user interface, reduces the learning curve, and eliminates the need for intermediate files.
-	By providing a Pythonic interface, \gls{pxblat} simplifies the usage of \gls{blat}, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
-	It integrates seamlessly with Biopython and comes equipped with user-centric features like server readiness checks and port retry mechanisms.
+	\gls{pxblat} provides an intuitive \gls{api} design, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
+	Besides, it integrates seamlessly with Biopython and comes equipped with user-centric features like server readiness checks and port retry mechanisms.
 	\gls{pxblat} removes the necessity for system calls and intermediate files, as well as reducing latency and data conversion overhead.
 	Benchmark tests reveal a \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} performance boost compared to \gls{blat} in the Python environment. \\
 
@@ -38,12 +37,12 @@
 
 The relentless progression of genome sequencing technologies has precipitated a dramatic surge in the availability of genomic data.
 The necessity for tools to decipher and manipulate these data has become paramount within both the research and clinical domains.
-\gls{blat}~\citep{kent2002blat} is a standout within the bioinformatics landscape, is recognized for its capability to swiftly conduct genome sequence alignments.
+\gls{blat}~\citep{kent2002blat} is a standout within the bioinformatics landscape and is recognized for its capability to swiftly conduct genome sequence alignments.
 It offers a faster alternative to the \gls{blast}~\citep{altschul1990basic} for aligning DNA sequences to the human genome~\citep{kent2002blat}.
 Despite its widespread use and endorsement within the bioinformatics community, interfacing with BLAT can present challenges.
 \gls{blat}, implemented in the C language, solely extends utilities via \glspl{cli}, rendering its integration into Python-based projects inconvenient.
-Consequently, \gls{blat} triggers system calls and data conversions that cause significant overhead when incorporated into Python projects.
-So far, a comprehensive approach to enhancing the usability of \gls{blat} remains noticeably absent.
+Since \gls{blat} triggers system calls and data conversions that cause significant overhead.
+So far, a comprehensive approach to enhancing the usability of \gls{blat} remains noticeably absent when incorporated into Python projects.
 
 The rise of Python as a preferred programming language within bioinformatics is widely acknowledged as a result of its user-friendly nature, extensive libraries, and unparalleled versatility~\citep{perkel2015programming}.
 Numerous libraries have been crafted to augment Python's interface, thereby amplifying the adaptability and compatibility of bioinformatics tools.
@@ -58,7 +57,7 @@ The overarching aim of this work is to fill the observed gap by providing a Pyth
 
 The design of \gls{pxblat} adheres to the principles of readability and simplicity, aiming for an intuitive user experience that diminishes the learning curve.
 Striving to curtail complexity while enhancing usability and performance, we extract the implementation of \gls{blat} from the codebase of the \gls{ucsc}, thus reducing dependencies.
-We retain the original C codebase, and reimplement the utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \gls{cli}, using the C\texttt{++} programming language~\citep{kent2002blat}.
+We retain the original C codebase, and reimplement the utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) including \emph{faTwoBit}, \emph{gfServer}, and \emph{gfClient} \gls{cli}, using the C\texttt{++} programming language~\citep{kent2002blat}.
 Subsequently, we integrate the current C\texttt{++} code and develop \gls{pxblat} via Pybind11~\citep{pybind11}.
 The approach facilitated direct interaction with the functions of the \gls{blat} without modifying its original source code, thereby preserving the integrity and performance of the \gls{blat} while broadening its capabilities.
 
@@ -93,10 +92,10 @@ The \gls{cli} includes completion for different shells, improving versatility.
 
 The result and performance of \gls{pxblat} are benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) using a dataset of \num[round-mode=places, round-precision=0]{1000} FASTA Files.
 The dataset, which consists of five groups, is sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
-The dataset includes varying sizes to cover a range of typical usage scenarios.
+The dataset includes varying lengths of sequence to cover a range of typical usage scenarios.
 The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} to \num[round-mode=places, round-precision=0]{3000}~\pCref{suppfig:fas-len}.
-We summarize \glspl{hsp} of all hits in each sample using \gls{blat} and \gls{pxblat} and compare the results.
-The result of benchmarking ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}
+We summarize the \glspl{hsp} of all hits in each sample using \gls{blat} and \gls{pxblat} and compare the results.
+That ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
 
 \begin{table*}
 	\centering
@@ -118,7 +117,7 @@ The result of benchmarking ensures the correctness of \gls{pxblat}~\pCref{suppta
 The benchmarking is conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
 We use system calls to launch \gls{blat} and the \emph{time} library to measure the execution time.
 Generally, \gls{pxblat} gains \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
-In summary, \gls{pxblat}  offers tangible benefits according to reduced execution time and improved user experience, proving its value as an enhancement to BLAT's functionality.
+In summary, \gls{pxblat}  offers tangible benefits according to reduced execution time and improved user experience, proving its value as an enhancement to \gls{blat}'s functionality.
 
 
 \section*{Acknowledgements}\label{sec:acknowledgements}

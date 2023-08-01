@@ -57,7 +57,7 @@
 \if@submit
 	\usepackage[none]{hyphenat}
 \else
-	\usepackage{hyphenat}
+	\usepackage[none]{hyphenat}
 \fi
 % reduce the spacing after a full-stop
 %\frenchspacing
