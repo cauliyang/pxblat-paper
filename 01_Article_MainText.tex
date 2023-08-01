@@ -1,6 +1,6 @@
 \leadauthor{Yangyang Li}
 
-\title{PxBLAT: An Ergonomics and Efficient Python Binding Library for BLAT}
+\title{PxBLAT: An Ergonomic and Efficient Python Binding Library for BLAT}
 \shorttitle{Ergonomic Genomic Analysis with \gls{pxblat} }
 
 \author[1]{Yangyang Li\orcidlink{0000-0001-8224-1067}}
@@ -44,16 +44,14 @@ Despite its widespread use and endorsement within the bioinformatics community, 
 \gls{blat}, implemented in the C language, solely extends utilities via \glspl{cli}, rendering its integration into Python-based projects inconvenient.
 Consequently, \gls{blat} triggers system calls and data conversions that cause significant overhead when incorporated into Python projects.
 So far, a comprehensive approach to enhancing the usability of \gls{blat} remains noticeably absent.
-We lack a holistic approach to enhancing the usability of \gls{blat}.
 
-The rise of Python as a preferred programming language within bioinformatics is widely acknowledged as a result of its user-friendly nature, extensive libraries, and unparalleled versatitlity~\citep{perkel2015programming}.
-Numerous libraries have been crafted to augment Python's interface with disparate computing languages, thereby amplifying the adaptability and compatibility of bioinformatics tools.
+The rise of Python as a preferred programming language within bioinformatics is widely acknowledged as a result of its user-friendly nature, extensive libraries, and unparalleled versatility~\citep{perkel2015programming}.
+Numerous libraries have been crafted to augment Python's interface, thereby amplifying the adaptability and compatibility of bioinformatics tools.
 For instance, Biopython~\citep{cock2009biopython}, a preeminent bioinformatics library, furnishes interfaces to tools like \gls{blast}~\citep{altschul1990basic} and Clustal~\citep{higgins1988clustal}.
 Nonetheless, a comprehensive Python library tailored for BLAT has not yet been realized.
-In this paper, we propose \gls{pxblat}, a Python library envisioned to optimize and enhance user interaction with \gls{blat}, thereby augmenting efficient and ergonomic.
-It empowers users to utilize \gls{blat} programmatically, facilitating its seamless integration into novel algorithms or analytical pipelines.
+
+In this paper, we propose \gls{pxblat}, which empowers users to utilize \gls{blat} programmatically, facilitating its seamless integration into novel algorithms or analytical pipelines.
 \gls{pxblat} serves as a bridge, bringing the high-performance capabilities of \gls{blat} into the Python environment while maintaining reproducibility.
-Thus, \gls{pxblat} opens up new possibilities for efficient genomic analysis.
 The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for \gls{blat}, addressing both its efficiency and ergonomic concerns.
 
 \section*{Implementation}\label{sec:implementation}
