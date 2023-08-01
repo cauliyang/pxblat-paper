@@ -13,11 +13,17 @@
 
 \begin{abstract}
 	\textbf{Summary:}
-	\gls{pxblat} provides an ergonomic and efficient Python binding library for the \gls{blat}, designed to enhance the user experience and performance of genomic analysis tasks.
-	By providing a Pythonic interface to \gls{blat}, \gls{pxblat} simplifies the usage of \gls{blat}, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
-	\gls{pxblat} removes the necessity for system calls and intermediate files as well as reducing latency and data conversion overhead. \\
+	We introduce \gls{pxblat}, a Python library designed to enhance usability and efficiency in interacting with the \gls{blat}.
+	\gls{pxblat} offers an intuitive user interface, reduces the learning curve, and eliminates the need for intermediate files.
+	By providing a Pythonic interface, \gls{pxblat} simplifies the usage of \gls{blat}, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
+	It integrates seamlessly with Biopython and comes equipped with user-centric features like server readiness checks and port retry mechanisms.
+	\gls{pxblat} removes the necessity for system calls and intermediate files, as well as reducing latency and data conversion overhead.
+	Benchmark tests reveal a \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} performance boost compared to \gls{blat} in the Python environment. \\
+
 	\textbf{Availability and Implementation:}
-	\gls{pxblat}  supports Python (version 3.8+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}). The source code of \gls{pxblat}  is available under the terms of an open-source MIT license and hosted on GitHub (\url{https://github.com/ylab-hi/pxblat}); its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}).
+	\gls{pxblat} supports Python (version 3.8+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}).
+	The source code of \gls{pxblat}  is available under the terms of an open-source MIT license and hosted on GitHub (\url{https://github.com/ylab-hi/pxblat}).
+	Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}).
 \end{abstract}
 
 \begin{keywords}
@@ -30,32 +36,33 @@
 
 \section*{Introduction}\label{sec:introduction}
 
-The continual advancement of genome sequencing technologies has led to an exponential increase in available genomic data.
-Tools to analyze and manipulate these data have become critically important in both research and clinical contexts.
-\gls{blat}~\citep{kent2002blat} is a standout in the bioinformatics field for its capability to perform rapid genome sequence alignments.
+The relentless progression of genome sequencing technologies has precipitated a dramatic surge in the availability of genomic data.
+The necessity for tools to decipher and manipulate these data has become paramount within both the research and clinical domains.
+\gls{blat}~\citep{kent2002blat} is a standout within the bioinformatics landscape, is recognized for its capability to swiftly conduct genome sequence alignments.
 It offers a faster alternative to the \gls{blast}~\citep{altschul1990basic} for aligning DNA sequences to the human genome~\citep{kent2002blat}.
-Despite its widespread use and acceptance in the bioinformatics community, interfacing with BLAT can present challenges.
-\gls{blat} is implemented in the C language and only provides utilities with \glspl{cli}, which makes it inconvenient into integrate \gls{blat} to a Python project.
-That means \gls{blat} triggers system calls and data conversions that cause significant overhead when used in Python project.
-So far, we lack a holistic approach to enhancing the usability of \gls{blat}.
+Despite its widespread use and endorsement within the bioinformatics community, interfacing with BLAT can present challenges.
+\gls{blat}, implemented in the C language, solely extends utilities via \glspl{cli}, rendering its integration into Python-based projects inconvenient.
+Consequently, \gls{blat} triggers system calls and data conversions that cause significant overhead when incorporated into Python projects.
+So far, a comprehensive approach to enhancing the usability of \gls{blat} remains noticeably absent.
+We lack a holistic approach to enhancing the usability of \gls{blat}.
 
-The rise of Python as a favored programming language in bioinformatics is well documented due to its ease of use, extensive libraries, and versatility~\citep{perkel2015programming}.
-Diverse libraries have been developed to extend Python's reach into other computing languages, improving the flexibility and interoperability of bioinformatics tools.
-For instance, Biopython~\citep{cock2009biopython}, one of the most prominent bioinformatics libraries, provides interfaces to tools like \gls{blast}~\citep{altschul1990basic} and Clustal~\citep{higgins1988clustal}.
-Nonetheless, to date, no comprehensive Python library for \gls{blat} has been developed.
-In this paper, we propose \gls{pxblat}, a Python library designed to streamline and enhance the interaction with \gls{blat}, thereby making it more efficient and ergonomic.
-It enables one to employ \gls{blat} programmatically and integrate it  seamlessly within novel algorithms or analytical pipelines.
+The rise of Python as a preferred programming language within bioinformatics is widely acknowledged as a result of its user-friendly nature, extensive libraries, and unparalleled versatitlity~\citep{perkel2015programming}.
+Numerous libraries have been crafted to augment Python's interface with disparate computing languages, thereby amplifying the adaptability and compatibility of bioinformatics tools.
+For instance, Biopython~\citep{cock2009biopython}, a preeminent bioinformatics library, furnishes interfaces to tools like \gls{blast}~\citep{altschul1990basic} and Clustal~\citep{higgins1988clustal}.
+Nonetheless, a comprehensive Python library tailored for BLAT has not yet been realized.
+In this paper, we propose \gls{pxblat}, a Python library envisioned to optimize and enhance user interaction with \gls{blat}, thereby augmenting efficient and ergonomic.
+It empowers users to utilize \gls{blat} programmatically, facilitating its seamless integration into novel algorithms or analytical pipelines.
 \gls{pxblat} serves as a bridge, bringing the high-performance capabilities of \gls{blat} into the Python environment while maintaining reproducibility.
-Hence, \gls{pxblat} would open up new possibilities for efficient genomic analysis.
+Thus, \gls{pxblat} opens up new possibilities for efficient genomic analysis.
 The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for \gls{blat}, addressing both its efficiency and ergonomic concerns.
 
 \section*{Implementation}\label{sec:implementation}
 
 The design of \gls{pxblat} adheres to the principles of readability and simplicity, aiming for an intuitive user experience that diminishes the learning curve.
-To minimize complexity and maximize usability and performance, we extract the implementation of \gls{blat} from the codebase of the \gls{ucsc}, reducing dependencies.
+Striving to curtail complexity while enhancing usability and performance, we extract the implementation of \gls{blat} from the codebase of the \gls{ucsc}, thus reducing dependencies.
 We retain the original C codebase, and reimplement the utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) including \emph{faTwoBit}, \emph{gfServer} and \emph{gfClient} \gls{cli}, using the C\texttt{++} programming language~\citep{kent2002blat}.
 Subsequently, we integrate the current C\texttt{++} code and develop \gls{pxblat} via Pybind11~\citep{pybind11}.
-The approach facilitated direct interaction with the functions of the \gls{blat} without modifying its original source code, thus preserving the integrity and performance of the \gls{blat} while broadening its capabilities.
+The approach facilitated direct interaction with the functions of the \gls{blat} without modifying its original source code, thereby preserving the integrity and performance of the \gls{blat} while broadening its capabilities.
 
 The query result of \gls{pxblat} conforms to the \emph{QueryResult} class of Biopython~\citep{cock2009biopython}, enabling  manipulation of the query result using Biopython features~\pCref{listing:example}.
 Furthermore, \gls{pxblat} eliminates the need for intermediate files, allowing all operations to be executed in memory.
