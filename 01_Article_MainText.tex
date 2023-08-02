@@ -4,9 +4,9 @@
 \shorttitle{Ergonomic Genomic Analysis with \gls{pxblat} }
 
 \author[1]{Yangyang Li\orcidlink{0000-0001-8224-1067}}
-\author[1,\Letter]{Rendong Yang \orcidlink {000-0003-0000-0000}}
+\author[1,2 \Letter]{Rendong Yang \orcidlink {0000-0002-9512-2240}}
 \affil[1]{Department of Urology, Northwestern University Feinberg School of Medicine, Chicago, IL 60611}
-% \affil[2]{B Institute, Chalk Road, Blackboardville, USA}
+\affil[2]{Robert H. Lurie Comprehensive Cancer Center, Northwestern University Feinberg School of Medicine, Chicago, IL 60611}
 \date{}
 
 \maketitle
@@ -45,9 +45,9 @@ It offers a faster alternative to \gls{blast}~\citep{altschul1990basic} for alig
 Despite its widespread use and endorsement within the bioinformatics community, interfacing with BLAT can present challenges.
 \gls{blat}, implemented in the C language, solely extends utilities via \glspl{cli}, rendering its integration into Python-based projects inconvenient.
 Moreover, \gls{blat} triggers system calls and data conversions that cause significant overhead.
-Until now, a comprehensive approach to enhancing the usability of \gls{blat} has been absent when incorporated into Python projects.
+Until now, a comprehensive approach to enhancing the usability of \gls{blat} has been absent when incorporated into Python-based projects.
 
-In this paper, we propose \gls{pxblat}, which empowers users to utilize \gls{blat} programmatically, facilitating its seamless integration into novel algorithms or analytical pipelines.
+Here, we propose \gls{pxblat}, which empowers users to utilize \gls{blat} programmatically, facilitating its seamless integration into novel algorithms or analytical pipelines.
 \gls{pxblat} serves as a bridge, bringing the high-performance capabilities of \gls{blat} into the Python environment while maintaining reproducibility.
 The overarching aim of this work is to fill the observed gap by providing a Python binding library specifically tailored for \gls{blat}, addressing both its efficiency and ergonomic concerns.
 
@@ -86,14 +86,13 @@ The \gls{cli} includes completion for different shells, improving versatility.
 \end{listing}
 
 
-\section*{Result}\label{sec:result}
+\section*{Benchmarking}\label{sec:benchmarking}
 
 The result and performance of \gls{pxblat} are benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) using a dataset of \num[round-mode=places, round-precision=0]{1000} FASTA Files.
-The dataset, which consists of five groups, is sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
+The testing dataset, which consists of five groups, is randomly sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
 The dataset includes varying lengths of sequence to cover a range of typical usage scenarios.
-The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} to \num[round-mode=places, round-precision=0]{3000}~\pCref{suppfig:fas-len}.
-We summarize the \glspl{hsp} of all hits in each sample using \gls{blat} and \gls{pxblat} and compare the results.
-That ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
+The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} bp to \num[round-mode=places, round-precision=0]{3000} bp~\pCref{suppfig:fas-len}.
+We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat} and \gls{pxblat} and compared their predictions. We observed \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across all tested samples, which ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
 
 \begin{table*}
 	\centering
@@ -112,7 +111,7 @@ That ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
 	\end{tabular}
 \end{table*}
 
-The benchmarking is conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
+The benchmarking was conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
 We use system calls to launch \gls{blat} and the \emph{time} library to measure the execution time.
 Generally, \gls{pxblat} gains \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
 In summary, \gls{pxblat}  offers tangible benefits according to reduced execution time and improved user experience, proving its value as an enhancement to \gls{blat}'s functionality.
@@ -121,8 +120,6 @@ In summary, \gls{pxblat}  offers tangible benefits according to reduced executio
 \section*{Acknowledgements}\label{sec:acknowledgements}
 
 Special thanks to the team who maintain the \gls{ucsc} codebase and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality.
-We are grateful for the generous support from our team, institution and funding bodies, which made this project possible.
-We look forward to continuing to contribute to its advancement.
 
 \section*{Conflict of interest}\label{sec:conflict-of-interest}
 
