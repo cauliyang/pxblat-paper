@@ -54,8 +54,8 @@ The overarching aim of this work is to fill the observed gap by providing a Pyth
 \section*{Implementation}\label{sec:implementation}
 
 The design of \gls{pxblat} adheres to the principles of readability and simplicity, aiming for an intuitive user experience that diminishes the learning curve.
-Striving to curtail complexity while enhancing usability and performance, we extract the implementation of \gls{blat} from the codebase of the \gls{ucsc}, thus reducing dependencies.
-We retain the original C codebase, and reimplement the utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) including \emph{faTwoBit}, \emph{gfServer}, and \emph{gfClient} \gls{cli}, using the C\texttt{++} programming language~\citep{kent2002blat}.
+Striving to curtail complexity while enhancing usability and performance, we extracted the implementation of \gls{blat} from the codebase of the \gls{ucsc}, thus reducing dependencies.
+We retain the original C codebase and reimplement the utilities of \gls{blat} \(\left(\mathtt{V}37.1\right)\) including \emph{faTwoBit}, \emph{gfServer}, and \emph{gfClient} \gls{cli}, using the C\texttt{++} programming language~\citep{kent2002blat}.
 Subsequently, we integrate the current C\texttt{++} code and develop \gls{pxblat} via Pybind11~\citep{pybind11}.
 The approach facilitated direct interaction with the functions of the \gls{blat} without modifying its original source code, thereby preserving the integrity and performance of the \gls{blat} while broadening its capabilities.
 
@@ -79,7 +79,7 @@ Besides, \gls{pxblat} contains \glspl{cli} implemented by its \gls{api}.
 The \gls{cli} includes completion for different shells, improving versatility.
 
 \begin{listing}
-	\inputminted[linenos, breaklines]{python}{codes/example1.py}
+	\inputminted[breaklines]{python}{codes/example1.py}
 	\mycaption{\gls{api} Example}{The code snippet shows how to use the \gls{api} of \gls{pxblat},
 		and the query result can be iterated. More code examples can be found at \url{https://pxblat.readthedocs.io/en}}
 	\label{listing:example}
@@ -92,7 +92,7 @@ The result and performance of \gls{pxblat} are benchmarked against \gls{blat} \(
 The testing dataset, which consists of five groups, is randomly sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
 The dataset includes varying lengths of sequence to cover a range of typical usage scenarios.
 The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} bp to \num[round-mode=places, round-precision=0]{3000} bp~\pCref{suppfig:fas-len}.
-We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat} and \gls{pxblat} and compared their predictions. We observed \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across all tested samples, which ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
+We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat} and \gls{pxblat} and compared their predictions. We observed that \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across all tested samples, which ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
 
 \begin{table*}
 	\centering
