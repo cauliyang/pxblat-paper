@@ -33,7 +33,9 @@ commit: format
 archive-bioinfo:
 	cp ./oup-authoring-template.cls submit/
 	cp ./oup-authoring-template.pdf submit/
+	cp ./oup-authoring-template.tex submit/
 	cp ./Fig submit/
 	cp ./oup-authoring-template-supp.cls submit/
 	cp ./supplementary_information.pdf submit/
+	cp ./supplementary_information.tex submit/
 	zip -r submit.zip submit
