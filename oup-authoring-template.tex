@@ -76,6 +76,9 @@
 \usepackage[acronym, style=index, shortcuts]{glossaries-extra}
 \usepackage{cleveref}
 \usepackage{adjustbox}
+\usepackage{xr}
+\externaldocument{supplementary_information}
+
 % define new commands
 \newcommand\pcref[1]{(\cref{#1})}
 \newcommand\pCref[1]{(\Cref{#1})}
@@ -125,7 +128,7 @@
 	\gls{pxblat} provides an intuitive \gls{api} design, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
 	Besides, it integrates seamlessly with Biopython and comes equipped with user-centric features like server readiness checks and port retry mechanisms.
 	\gls{pxblat} removes the necessity for system calls and intermediate files, as well as reducing latency and data conversion overhead.
-	Benchmark tests reveal \gls{pxblat} gains a \textasciitilde\SI[per-mode=symbol,round-precision=0]{20}{\percent} performance boost compared to \gls{blat} in the Python environment.\\
+	Benchmark tests show that PxBLAT outperforms BLAT in the Python environment by roughly \SI[per-mode=symbol,round-precision=0]{20}{\percent}.\\
 	\textbf{Availability and implementation:} \gls{pxblat} supports Python (version 3.8+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}).
 	The source code of \gls{pxblat}  is licensed under an open-source MIT license and is accessible via GitHub (\url{https://github.com/ylab-hi/pxblat}).
 	Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}).
@@ -146,7 +149,7 @@ The rise of Python as a preferred programming language within bioinformatics is 
 A variety of libraries have been crafted to augment Python's interface, thereby amplifying the adaptability and compatibility of bioinformatics tools~\citep{putri2022analysing, cock2009biopython}.
 For instance, Biopython~\citep{cock2009biopython}, a preeminent bioinformatics library, furnishes interfaces to tools like \gls{blast}~\citep{altschul1990basic} and Clustal~\citep{higgins1988clustal}.
 
-Besides, the relentless progression of genome sequencing technologies has precipitated a dramatic surge in the availability of genomic data.
+Additionally, the relentless progression of genome sequencing technologies has precipitated a dramatic surge in the availability of genomic data.
 The necessity for tools to decipher and manipulate these data has become paramount within both the research and clinical domains.
 \gls{blat}~\citep{kent2002blat} is a standout within the bioinformatics landscape and is recognized for its capability to swiftly conduct genome sequence alignments.
 It offers a faster alternative to \gls{blast}~\citep{altschul1990basic} for aligning DNA sequences to the human genome~\citep{kent2002blat}.
@@ -199,10 +202,9 @@ The \gls{cli} includes completion for different shells, improving versatility.
 
 The result and performance of \gls{pxblat} are benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) using a dataset of \num[round-mode=places, round-precision=0]{1000} FASTA Files.
 The testing dataset, which consists of five groups, is randomly sampled from chromosome \num[round-mode=places, round-precision=0]{20} of the Human Genome (hg38), and each sample includes one sequence.
-The dataset includes varying lengths of sequence to cover a range of typical usage scenarios.
-The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} bp to \num[round-mode=places, round-precision=0]{3000} bp~\pCref{suppfig:fas-len}.
-We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat} and \gls{pxblat} and compared their predictions. We observed that \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across all tested samples, which ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1}.
-
+The length of each sequence ranges from \num[round-mode=places, round-precision=0]{1000} bp to \num[round-mode=places, round-precision=0]{3000} bp, which covers a range of typical usage scenarios~\pCref{suppfig:fas-len}.
+We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat} and \gls{pxblat} and compared their predictions.
+We observed that \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across all tested samples, which ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1,supptab:cmp2,supptab:cmp3,supptab:cmp4,supptab:cmp5}.
 \begin{table}
 	\caption{Performance  Benchmarking}\label{tab:performance-evaluation}
 	\begin{adjustbox}{width=\columnwidth,center}
@@ -222,7 +224,7 @@ We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat}
 
 The benchmarking was conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
 We use system calls to launch \gls{blat} and the \emph{time} library to measure the execution time.
-Generally, \gls{pxblat} gains \textasciitilde\SI[per-mode=symbol, round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
+\gls{pxblat}, on average, gains \SI[per-mode=symbol, round-precision=0]{20}{\percent} speedup compared to \gls{blat}~\pCref{tab:performance-evaluation}.
 In summary, \gls{pxblat}  offers tangible benefits according to reduced execution time and improved user experience, proving its value as an enhancement to \gls{blat}'s functionality.
 
 \section{Acknowledgments}
