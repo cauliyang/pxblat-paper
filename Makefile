@@ -34,7 +34,8 @@ archive-bioinfo:
 	cp ./oup-authoring-template.cls submit/
 	cp ./oup-authoring-template.pdf submit/
 	cp ./oup-authoring-template.tex submit/
-	cp ./Fig submit/
+	cp -r Fig submit/
+	cp -r tables  submit/
 	cp ./oup-authoring-template-supp.cls submit/
 	cp ./supplementary_information.pdf submit/
 	cp ./supplementary_information.tex submit/
