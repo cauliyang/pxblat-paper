@@ -29,3 +29,11 @@ commit: format
 	git add .
 	oc
 
+
+archive-bioinfo:
+	cp ./oup-authoring-template.cls submit/
+	cp ./oup-authoring-template.pdf submit/
+	cp ./Fig submit/
+	cp ./oup-authoring-template-supp.cls submit/
+	cp ./supplementary_information.pdf submit/
+	zip -r submit.zip submit
