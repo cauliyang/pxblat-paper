@@ -1,0 +1,72 @@
+{
+    "InternalPDFViewer": {
+        "Embedded": true,
+        "File": "oup-authoring-template.pdf"
+    },
+    "Session": {
+        "Bookmarks": [
+        ],
+        "CurrentFile": "oup-authoring-template.tex",
+        "FileVersion": 1,
+        "Files": [
+            {
+                "Col": 16,
+                "EditorGroup": 0,
+                "FileName": "oup-authoring-template.tex",
+                "FirstLine": 63,
+                "FoldedLines": "",
+                "Line": 86
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "tables/cmp1.tex",
+                "FirstLine": 155,
+                "FoldedLines": "",
+                "Line": 213
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "tables/cmp2.tex",
+                "FirstLine": 154,
+                "FoldedLines": "",
+                "Line": 213
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "tables/cmp3.tex",
+                "FirstLine": 155,
+                "FoldedLines": "",
+                "Line": 214
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "tables/cmp4.tex",
+                "FirstLine": 158,
+                "FoldedLines": "",
+                "Line": 217
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "tables/cmp5.tex",
+                "FirstLine": 153,
+                "FoldedLines": "",
+                "Line": 212
+            },
+            {
+                "Col": 0,
+                "EditorGroup": 0,
+                "FileName": "supplementary_information.tex",
+                "FirstLine": 95,
+                "FoldedLines": "",
+                "Line": 129
+            }
+        ],
+        "MasterFile": "",
+        "VerticalSplit": true
+    }
+}
