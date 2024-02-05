@@ -244,3 +244,4 @@ TSWLatexianTemp*
 *.pdf
 !submit/*pdf
 *zip
+.virtual_documents

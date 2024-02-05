@@ -271,7 +271,7 @@ Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.i
 % Use first person. PLOS ONE authors please skip this step.
 % Author Summary not valid for PLOS ONE submissions.
 %\section*{Author summary}
-%Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Nullam sapien tellus, commodo id velit id, eleifend volutpat quam. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Nullam sapien tellus, commodo id velit id, eleifend volutpat quam. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Name sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.
 
 \linenumbers
 
@@ -339,9 +339,10 @@ Simultaneously, it extends the framework's functionality, aligning it with moder
 		\bottomrule
 	\end{tabular}
 	\begin{flushleft}
-		This table provides a comparative overview of the features available in \gls{pxblat} and \gls{blat}.
-		Features are marked with \cmark{} indicating the presence and \xmark{} indicating the absence of the feature.
-		The enhancements in \gls{pxblat} demonstrate its extended functionality, especially in areas such as server management (wait server), data conversion (fasta to bit, bit to fasta), and user interaction (shell completion), positioning it as a robust alternative to the traditional \gls{blat} tool.
+        This table presents a comprehensive comparison between the features offered by \gls{pxblat} and the traditional \gls{blat}.
+        Features are denoted with a \cmark{} to signify availability and an \xmark{} to indicate absence.
+        Notably, \gls{pxblat} showcases significant enhancements, particularly in server management (e.g., wait server), data conversion (e.g., fasta to bit, bit to fasta), and enriched user interaction (e.g., shell completion).
+        These advancements firmly establish \gls{pxblat} as a superior and more versatile alternative to the conventional \gls{blat} tool.
 	\end{flushleft}
 \end{table}
 
@@ -387,7 +388,7 @@ This ensures a seamless installation process, free from the complexities of C li
 %	\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
 %	c
 %		\caption{
-%			{\bf Table caption Nulla mi mi, venenatis sed ipsum varius, volutpat euismod diam.}}
+%			{\bf Table caption Nulla mi mi, venenatis sed ipsum various, volutpat euismod diam.}}
 %		\begin{tabular}{|l+l|l|l|l|l|l|l|}
 %			\hline
 %			\multicolumn{4}{|l|}{\bf Heading1} & \multicolumn{4}{|l|}{\bf Heading2}                                                                                     \\ \thickhline
@@ -405,16 +406,24 @@ This ensures a seamless installation process, free from the complexities of C li
 %PLOS does not support heading levels beyond the 3rd (no 4th level headings).
 \subsection*{Performance on real datasets}
 
-The efficacy and performance of \gls{pxblat} were rigorously benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) utilizing eight distinct groups of FASTA files.
-Each group comprised a set of samples, ranging from 50 to 600 samples per group.
+The efficacy and performance of \gls{pxblat} were rigorously benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) utilizing eight distinct sample sets of FASTA files.
+Each set comprised a group of samples, ranging from 50 to 600 samples per set.
 The datasets are meticulously sampled from chromosome 20 of the Human Genome (hg38), with each dataset containing a single sequence.
 These sequences varied in length from \num{1000} bp to \num{3000} bp, encompassing a spectrum of typical use-case scenarios (Fig~\ref{fig:fas_len}).
 
 \begin{figure}[!h]
 	%	\caption{{\bf Bold the figure title.}
 	%		Figure caption text here, please use this space for the figure panel descriptions instead of using subfigure commands. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
-	\caption{{\bf Sequence length distribution of real datasets.}}
-	%    \includegraphics[width=\linewidth]{Fig/performance}
+	\caption{{\bf Sequence length distribution in real datasets.} This figure illustrates the distribution of fasta sequence lengths across different sample sets. The \(x\) axis represents the sequence length, while the \(y\) axis denotes the frequency of each length.
+        a: Distribution of a set of \num{50} samples.
+        b: Distribution of a set of \num{100} samples.
+        c: Distribution of a set of \num{200} samples.
+        d: Distribution of a set of \num{300} samples.
+        e: Distribution of a set of \num{400} samples.
+        f: Distribution of a set of \num{500} samples.
+        g: Distribution of a set of \num{600} samples.
+        }
+	\includegraphics[width=\linewidth]{figures/fas_len_ranges}
 	\label{fig:fas_len}
 \end{figure}
 
@@ -424,13 +433,16 @@ This comparison revealed a high degree of concordance between the \glspl{hsp} pr
 The benchmarking process was carried out on an Apple M1 Pro, running macOS 13.4.1 (arm64).
 For launching \gls{blat}, system calls were utilized, and the execution time was meticulously measured using the time library.
 Each group of FASTA files underwent three experimental runs, facilitating a comprehensive assessment of performance.
-The results highlighted the efficiency of \gls{pxblat}, with observed speedups ranging from 1.00 to 1.77 times compared to the traditional \gls{blat} execution (Fig~\ref{fig:performance}).
+The results highlighted the efficiency of \gls{pxblat}, with observed speedups ranging from 1.00 to 1.77 times compared to the \gls{blat} execution (Fig~\ref{fig:performance}).
 
 \begin{figure}[!h]
 	%	\caption{{\bf Bold the figure title.}
 	%		Figure caption text here, please use this space for the figure panel descriptions instead of using subfigure commands. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
-	\caption{{\bf Performance comparison between BLAT and PxBLAT.}}
-	%    \includegraphics[width=\linewidth]{Fig/performance}
+	\caption{{\bf Performance comparison between \gls{blat} and \gls{pxblat}.} This figure quantifies the performance of \gls{blat} (indicated by red points) and \gls{pxblat} (indicated by blue points) across various sample groups, with the \(x\) axis categorizing the groups and the \(y\) axis detailing the execution time in seconds.
+        Each group encapsulates the results of three independent experiments.
+        Trend lines, depicted in red for \gls{blat} and blue for \gls{pxblat}, illustrate the general performance pattern for each tool.
+        Notably, the green text highlights the speedup achieved by PxBLAT, calculated as the ratio of execution times (\(\mathrm{time}_\textsubscript{BLAT} / \mathrm{time}_\textsubscript{PxBLAT}\)), underscoring the efficiency gains of \gls{pxblat} relative to \gls{blat}.}
+	\includegraphics[width=\linewidth]{figures/performance}
 	\label{fig:performance}
 \end{figure}
 
@@ -485,7 +497,11 @@ Together, these focused endeavors epitomize our dedication to excellence and our
 
 \paragraph*{S1 Table.}
 \label{S1_Table}
-{\bf Performance comparison between \gls{pxblat} and \gls{blat}.} Samples includes 50, 100, 200, 300, 400, 500, 600, and three experiments are conducted for each group. The speedup is calculated by \(\mathrm{time}_\textsubscript{blat} /  \mathrm{time}_\textsubscript{pxblat} \)
+{\bf Performance comparison between \gls{pxblat} and \gls{blat}.}
+This graph illustrates the performance of both \gls{pxblat} and \gls{blat} across sample groups containing 50, 100, 200, 300, 400, 500, and 600 samples.
+For each sample group, three independent experiments are conducted to ensure robust performance evaluation.
+The efficiency of \gls{pxblat} relative to \gls{blat} is quantified through the speedup metric, calculated as the ratio of execution times \(\mathrm{time}_\textsubscript{blat} / \mathrm{time}_\textsubscript{pxblat} \).
+This comparison highlights the computational advantages of \gls{pxblat} in terms of processing speed.
 
 \begin{longtable}{SSSS}
 	\toprule
@@ -527,7 +543,9 @@ Together, these focused endeavors epitomize our dedication to excellence and our
 
 \paragraph*{S2 Table.}
 \label{S2_Table}
-{\bf Performance comparison between \gls{pxblat} and \gls{blat}.} Samples includes 50, 100, 200, 300, 400, 500, 600, and three experiments are conducted for each group. The speedup is calculated by \(\mathrm{time}_\textsubscript{blat} /  \mathrm{time}_\textsubscript{pxblat} \)
+{\bf \gls{hsp} comparison between \gls{pxblat} and \gls{blat}.}
+
+
 
 \begin{longtable}{lSS}
 	%    \caption{HSP Comparison between BLAT and PxBLAT} \label{tab:cmp} \\
@@ -535,7 +553,7 @@ Together, these focused endeavors epitomize our dedication to excellence and our
 	Sample                  & {BLAT} & {PxBLAT}              \\
 	\midrule
 	\endfirsthead
-	\caption[]{\gls{hsp} Comparison between BLAT and PxBLAT} \\
+%	\caption[]{\gls{hsp} Comparison between BLAT and PxBLAT} \\
 	\toprule
 	Sample                  & {BLAT} & {PxBLAT}              \\
 	\midrule
