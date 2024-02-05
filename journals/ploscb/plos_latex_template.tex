@@ -311,7 +311,6 @@ The primary goal of \gls{pxblat} is to bridge the gap in the current landscape b
 %		Figure caption text here, please use this space for the figure panel descriptions instead of using subfigure commands. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
 %	\label{fig1}
 %\end{figure}
-
 The design of \gls{pxblat} is anchored in the principles of readability and simplicity, fostering an intuitive user interface that minimizes the learning curve for users.
 In our quest to streamline complexity and amplify both usability and performance, we meticulously extracted the core implementation of \gls{blat} from the broader \gls{ucsc} codebase, significantly reducing dependency overhead.
 
@@ -414,6 +413,7 @@ These sequences varied in length from \num{1000} bp to \num{3000} bp, encompassi
 \begin{figure}[!h]
 	%	\caption{{\bf Bold the figure title.}
 	%		Figure caption text here, please use this space for the figure panel descriptions instead of using subfigure commands. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
+	\includegraphics[width=\linewidth]{figures/fas_len_ranges}
 	\caption{{\bf Sequence length distribution in real datasets.} This figure illustrates the distribution of fasta sequence lengths across different sample sets. The \(x\) axis represents the sequence length, while the \(y\) axis denotes the count of each length.
 		a: Distribution of a set of \num{50} samples.
 		b: Distribution of a set of \num{100} samples.
@@ -423,7 +423,6 @@ These sequences varied in length from \num{1000} bp to \num{3000} bp, encompassi
 		f: Distribution of a set of \num{500} samples.
 		g: Distribution of a set of \num{600} samples.
 	}
-	\includegraphics[width=\linewidth]{figures/fas_len_ranges}
 	\label{fig:fas_len}
 \end{figure}
 
@@ -438,11 +437,11 @@ The results highlighted efficiency of \gls{pxblat}, with observed speedups rangi
 \begin{figure}[!h]
 	%	\caption{{\bf Bold the figure title.}
 	%		Figure caption text here, please use this space for the figure panel descriptions instead of using subfigure commands. A: Lorem ipsum dolor sit amet. B: Consectetur adipiscing elit.}
+	\includegraphics[width=\linewidth]{figures/performance}
 	\caption{{\bf Performance comparison between \gls{blat} and \gls{pxblat}.} This figure quantifies the performance of \gls{blat} (indicated by red points) and \gls{pxblat} (indicated by blue points) across various data sets, with the \(x\) axis categorizing the number of samples in the sets and the \(y\) axis detailing the execution time in seconds.
 		Each group encapsulates the results of three independent experiments.
 		Trend lines, depicted in red for \gls{blat} and blue for \gls{pxblat}, illustrate the general performance pattern for each tool.
 		Notably, the green text highlights the speedup achieved by PxBLAT, calculated as the ratio of the execution time (\(\mathrm{time}_\textsubscript{blat} / \mathrm{time}_\textsubscript{pxblat}\)), underscoring the efficiency gains of \gls{pxblat} relative to \gls{blat}.}
-	\includegraphics[width=\linewidth]{figures/performance}
 	\label{fig:performance}
 \end{figure}
 
@@ -1218,7 +1217,7 @@ Special thanks to the team who maintain the \gls{ucsc} codebase and users from t
 		\providecommand{\doi}[1]{doi: #1}\else
 		\providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-    \bibitem{perkel2015programming}
+	\bibitem{perkel2015programming}
 	J.~M. Perkel.
 	\newblock Programming: {{Pick}} up {{Python}}.
 	\newblock \emph{Nature}, 518\penalty0 (7537):\penalty0 125--126, 2015.
