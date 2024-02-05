@@ -138,18 +138,18 @@
 
 \abstract{
 	\textbf{Summary:}
-    We introduce \gls{pxblat}, a Python library designed to enhance usability and efficiency in interacting with the \gls{blat}.
-    \gls{pxblat} provides an intuitive \gls{api} design, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
-    Besides, it comes equipped with user-centric features like server readiness checks and port retry mechanisms.
-    \gls{pxblat} removes the necessity for system calls and intermediate files, as well as reducing latency and data conversion overhead.
-    Benchmark tests reveal \gls{pxblat} gains about \SI[per-mode=symbol,round-precision=0]{20}{\percent} performance boost compared to \gls{blat} in the Python environment. \\
-    \textbf{Availability and Implementation:}
-    \gls{pxblat} supports Python (version 3.9+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}).
-    The source code and executable are freely available for academic, nonprofit and personal use.
-    Commercial licensing information is available on the Kent Informatics website (\url{http://www.kentinformatics.com}).
-    Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}). \newline
+	We introduce \gls{pxblat}, a Python library designed to enhance usability and efficiency in interacting with the \gls{blat}.
+	\gls{pxblat} provides an intuitive \gls{api} design, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
+	Besides, it comes equipped with user-centric features like server readiness checks and port retry mechanisms.
+	\gls{pxblat} removes the necessity for system calls and intermediate files, as well as reducing latency and data conversion overhead.
+	Benchmark tests reveal \gls{pxblat} gains about \SI[per-mode=symbol,round-precision=0]{20}{\percent} performance boost compared to \gls{blat} in the Python environment. \\
+	\textbf{Availability and Implementation:}
+	\gls{pxblat} supports Python (version 3.9+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}).
+	The source code and executable are freely available for academic, nonprofit and personal use.
+	Commercial licensing information is available on the Kent Informatics website (\url{http://www.kentinformatics.com}).
+	Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}). \newline
 	\textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics Advance} online.
-    }
+}
 
 % \abstract{Abstracts must be able to stand alone and so cannot contain citations to
 % 	the paper's references, equations, etc. An abstract must consist of a single
@@ -230,8 +230,6 @@ The length of each sequence ranges from \num[round-mode=places, round-precision=
 We summarized the \glspl{hsp} of all hits in each sample derived from \gls{blat} and \gls{pxblat} and compared their predictions.
 We observed that \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across all tested samples, which ensures the correctness of \gls{pxblat}~\pCref{supptab:cmp1,supptab:cmp2,supptab:cmp3,supptab:cmp4,supptab:cmp5}.
 
-
-
 %\begin{table}
 %	\caption{Performance  Benchmarking}\label{tab:performance-evaluation}
 %	\begin{adjustbox}{width=\columnwidth,center}
@@ -251,12 +249,11 @@ We observed that \gls{pxblat} reproduces the \glspl{hsp} of \gls{blat} across al
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{Fig/performance}
-    \caption{Performance Between BLAT and PxBLAT}
-    \label{fig:performance}
+	\centering
+	\includegraphics[width=\linewidth]{Fig/performance}
+	\caption{Performance Between BLAT and PxBLAT}
+	\label{fig:performance}
 \end{figure}
-
 
 The benchmarking was conducted on an Apple M1 Pro with macOS 13.4.1 22F82 arm64.
 We use system calls to launch \gls{blat} and the \emph{time} library to measure the execution time.
@@ -267,7 +264,6 @@ In summary, \gls{pxblat}  offers tangible benefits according to reduced executio
 
 Special thanks to the team who maintain the \gls{ucsc} codebase and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality.
 
-
 \section{Competing interests}
 No competing interest is declared.
 
@@ -275,7 +271,6 @@ No competing interest is declared.
 
 This work was supported by the National Institute of General Medical
 Sciences [R35GM142441].
-
 
 \section*{Data availability}\label{sec:data-availability}
 
