@@ -213,11 +213,11 @@
 	%	Name4 Surname\textsuperscript{2},
 	%	Name5 Surname\textsuperscript{2\ddag},
 	%	Name6 Surname\textsuperscript{2\ddag},
-	Rendong Yang\textsuperscript{1*},
+	Rendong Yang\textsuperscript{1*}
 	%	with the Lorem Ipsum Consortium\textsuperscript{\textpilcrow}
 	\\
 	\bigskip
-	\textbf{1} Department of Urology, Northwestern University, Feinberg School of Medicine, Chicago, IL, USA
+	\textbf{1} Department of Urology, Northwestern University Feinberg School of Medicine, Chicago, IL, USA
 	%	\\
 	%	\textbf{2} Affiliation Dept/Program/Center, Institution Name, City, State, Country
 	%	\\
@@ -253,14 +253,18 @@
 \end{flushleft}
 % Please keep the abstract below 300 words
 \section*{Abstract}
-\gls{pxblat}, a Python library, is designed to enhance usability and efficiency in interacting with the \gls{blat}.
-\gls{pxblat} provides an intuitive \gls{api} design, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
-Moreover, \gls{pxblat}'s design philosophy emphasizes ease of use, memory efficiency, and the elimination of intermediary files and unnecessary system calls, thereby enhancing computational speed and user experience.
-Benchmark tests reveal its superior performance across various datasets, illustrating its capacity to maintain correctness.
-\gls{pxblat} supports Python (version 3.9+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}).
-The source code and executable are freely available for academic, nonprofit, and personal use.
+\gls{pxblat}, a Python library, is introduced to address the limitations inherent in the traditional \gls{blat} suite, offering significant improvements in terms of usability, performance, and integration within the Python ecosystem. In our manuscript, we present a detailed comparison of \gls{pxblat} against BLAT, demonstrating notable advancements in execution speed, data handling, and user interaction capabilities. Benchmarked across multiple datasets, \gls{pxblat} shows a considerable speedup ranging from 1.00 to 1.77 times, underscoring its efficiency and potential to streamline genomic data analysis workflows. Furthermore, we highlight the accessibility of \gls{pxblat}, including its code and comprehensive documentation, all aimed at fostering community engagement and facilitating easy adoption.
+
+
+%
+%\gls{pxblat}, a Python library, is designed to enhance usability and efficiency in interacting with the \gls{blat}.
+%\gls{pxblat} provides an intuitive \gls{api} design, allowing the incorporation of its functionality directly into Python-based bioinformatics workflows.
+%Moreover, \gls{pxblat}'s design philosophy emphasizes ease of use, memory efficiency, and the elimination of intermediary files and unnecessary system calls, thereby enhancing computational speed and user experience.
+%Benchmark tests reveal its superior performance across various datasets, illustrating its capacity to maintain correctness.
+%\gls{pxblat} supports Python (version 3.9+), and pre-compiled packages are released via PyPI (\url{https://pypi.org/project/pxblat/}) and Bioconda (\url{https://anaconda.org/bioconda/pxblat}).
+%The source code and executable are freely available for academic, nonprofit, and personal use.
 %Commercial licensing information is available on the Kent Informatics website (\url{http://www.kentinformatics.com}).
-Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}).
+%Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.io/en/latest/}).
 %\textbf{Availability and Implementation:}
 
 % Please keep the Author Summary between 150 and 200 words
@@ -276,17 +280,15 @@ Its documentation is available on ReadTheDocs (\url{https://pxblat.readthedocs.i
 The rise of Python as a preferred programming language within bioinformatics is widely acknowledged as a result of its user-friendly nature, extensive libraries, and unparalleled versatility~\cite{perkel2015programming}.
 A variety of libraries have been crafted to augment Python's interface, thereby amplifying the adaptability and compatibility of bioinformatics tools~\cite{putri2022analysing, cock2009biopython}.
 For instance, Biopython~\cite{cock2009biopython}, a preeminent bioinformatics library, furnishes interfaces to tools like \gls{blast}~\cite{altschul1990basic} and Clustal~\cite{higgins1988clustal}.
-
-Furthermore, the unprecedented growth in genome sequencing technologies has significantly increased the availability of genomic data, emphasizing the need for advanced tools in both research and clinical contexts~\cite{mardis2008next,marx2023method}.
 \gls{blat}, a prominent tool in bioinformatics, is renowned for its speed in genome sequence alignments and serves as a more efficient alternative to \gls{blast} for aligning DNA sequences with the reference genome~\cite{kent2002blat}.
-However, despite its popularity and effectiveness, \gls{blat}'s integration is fraught with difficulties, primarily due to its C-based implementation and reliance on \glspl{cli}, hindering seamless integration into Python projects.
+Furthermore, the unprecedented growth in genome sequencing technologies has significantly increased the availability of genomic data, emphasizing the need for advanced tools in both research and clinical contexts~\cite{mardis2008next,marx2023method}.
 
-Also, executing extensive queries with the \gls{blat} suite often leads to inefficiencies, particularly when operations are isolated and not executed in batches.
+However, despite its popularity and effectiveness, \gls{blat}'s integration is fraught with difficulties, primarily due to its C-based implementation and reliance on \glspl{cli}, hindering seamless integration into Python projects.
+Also, executing extensive queries with the \gls{blat} suite leads to inefficiencies, particularly when operations are isolated and not executed in batches.
 Typically, \gls{blat}'s task allocation is sporadic, intermixed with other tasks.
 Users generally face a choice: either employ standalone \gls{blat} or integrate \emph{gfServer} with \emph{gfClient}~\cite{altschul1990basic}.
 \gls{blat}'s standard operational model involves initiating \emph{gfServer}, conducting the sequence query through \emph{gfClient}, and subsequently terminating the server after each query.
 This method becomes highly inefficient for ungrouped, numerous queries as it necessitates the repeated initialization and shutdown of \emph{gfServer}, introducing significant overhead~\cite{kent2002blat}.
-This overhead is particularly evident in tasks such as indexing large references.
 An optimized approach would entail initiating \emph{gfServer} a single time and leveraging \emph{gfClient} to execute multiple queries.
 However, the command-line-only access to \emph{gfServer} and \emph{gfClient} complicates this process.
 This limitation necessitates the management of system calls (like \emph{subprocess} or \emph{os.system}), the handling of intermediate temporary files, and dealing with format conversion, all of which cumulatively degrade performance.
@@ -338,7 +340,7 @@ Simultaneously, it extends the framework's functionality, aligning it with moder
 	\end{flushleft}
 \end{table}
 
-\gls{pxblat} delivers its query results in alignment with the \emph{QueryResult} class of Biopython~\cite{cock2009biopython}, enabling seamless manipulation of query outputs using Biopython's comprehensive suite of features (Listing~\ref{listing:example}).
+\gls{pxblat} delivers its query results in alignment with the \emph{QueryResult} class of Biopython~\cite{cock2009biopython}, enabling seamless manipulation of query outputs (Listing~\ref{listing:example}).
 This integration effectively streamlines the post-query workflow, allowing users to leverage the full potential of Biopython in their sequence alignment tasks.
 Significantly, \gls{pxblat} negates the necessity for intermediate files by conducting all operations in memory.
 This advancement eliminates the often cumbersome and time-consuming step of data format conversion, enabling users to concentrate on the core aspects of sequence alignment.
@@ -351,7 +353,7 @@ To enhance user flexibility, the necessity for input and output files has been m
 	\label{listing:example}
 \end{listing}
 
-Recognizing the latency and potential performance bottlenecks induced by system calls, \gls{pxblat} minimizes their usage, thereby streamlining operations and enhancing overall efficienc.
+Recognizing the latency and potential performance bottlenecks induced by system calls, \gls{pxblat} minimizes their usage, thereby streamlining operations and enhancing overall efficiency.
 Additionally, \gls{pxblat} simplifies server status retrieval, circumventing the complexities and potential pitfalls of log file manipulation, particularly in concurrent usage scenarios.
 To further elevate the user experience and operational efficiency, \gls{pxblat} integrates several ergonomic features.
 These include real-time server readiness checks for alignments, automatic port retries when the default is in use, and the capability to latch onto an already running server if available.
@@ -378,7 +380,6 @@ This ensures a seamless installation process, free from the complexities of C li
 %% Place tables after the first paragraph in which they are cited.
 %\begin{table}[!ht]
 %	\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
-%	c
 %		\caption{
 %			{\bf Table caption Nulla mi mi, venenatis sed ipsum various, volutpat euismod diam.}}
 %		\begin{tabular}{|l+l|l|l|l|l|l|l|}
@@ -400,7 +401,7 @@ This ensures a seamless installation process, free from the complexities of C li
 
 The performance of \gls{pxblat} were rigorously benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) utilizing eight distinct sample sets of FASTA files.
 Each set comprised a group of samples, ranging from 50 to 600 samples per set.
-The datasets are sampled from chromosome 20 of the Human Genome (hg38), with each sample containing a single sequence.
+The datasets are sampled from chromosome 20 of the genome of \emph{Homo sapiens} (hg38), with each sample containing a single sequence.
 These sequences varied in length from \num{1000} bp to \num{3000} bp, encompassing a spectrum of typical use-case scenarios (Fig~\ref{fig:fas_len}).
 
 \begin{figure}[!h]
@@ -420,7 +421,7 @@ These sequences varied in length from \num{1000} bp to \num{3000} bp, encompassi
 \end{figure}
 
 To ascertain the accuracy and reliability of \gls{pxblat}, we conducted a comparative analysis of the \glspl{hsp} generated by both \gls{blat} and \gls{pxblat} for each sample.
-This comparison revealed a high degree of concordance between the \glspl{hsp} produced by \gls{pxblat} and those generated by \gls{blat}, affirming the fidelity of \gls{pxblat}'s output (\nameref{S2_Table}).
+This side-by-side comparison indicated a complete alignment between the \glspl{hsp} generated by \gls{pxblat} and \gls{blat}, validating the precision of \gls{pxblat}'s results (\nameref{S2_Table}).
 
 The benchmarking process was carried out on an Apple M1 Pro running macOS 13.4.1 (arm64).
 For launching \gls{blat}, system calls were utilized, and the execution time was measured using the time library.
@@ -458,7 +459,6 @@ Additionally, we are committed to the development of comprehensive educational m
 Together, these focused endeavors epitomize our dedication to excellence and our aspiration to nurture an inclusive, innovative, and community-driven ecosystem in the field of bioinformatics.
 
 %\section*{Discussion}
-%
 %\section*{Conclusion}
 
 
@@ -1241,6 +1241,15 @@ Special thanks to the team who maintain the \gls{ucsc} codebase and users from t
 	\newblock ISSN 0378-1119.
 	\newblock \doi{10.1016/0378-1119(88)90330-7}.
 
+
+    \bibitem{kent2002blat}
+    W.~J. Kent.
+    \newblock {{BLAT}}—{{The BLAST-Like Alignment Tool}}.
+    \newblock \emph{Genome Research}, 12\penalty0 (4):\penalty0 656--664, 2002.
+    \newblock ISSN 1088-9051, 1549-5469.
+    \newblock \doi{10.1101/gr.229202}.
+
+
 	\bibitem{mardis2008next}
 	Elaine~R Mardis.
 	\newblock Next-generation dna sequencing methods.
@@ -1252,12 +1261,6 @@ Special thanks to the team who maintain the \gls{ucsc} codebase and users from t
 	\newblock {\em Nature Methods}, 20(1):6--11, 2023.
 
 
-	\bibitem{kent2002blat}
-	W.~J. Kent.
-	\newblock {{BLAT}}—{{The BLAST-Like Alignment Tool}}.
-	\newblock \emph{Genome Research}, 12\penalty0 (4):\penalty0 656--664, 2002.
-	\newblock ISSN 1088-9051, 1549-5469.
-	\newblock \doi{10.1101/gr.229202}.
 
 	\bibitem{pybind11}
 	W.~Jakob, J.~Rhinelander, and D.~Moldovan.
@@ -1267,4 +1270,3 @@ Special thanks to the team who maintain the \gls{ucsc} codebase and users from t
 \end{thebibliography}
 
 \end{document}
-
