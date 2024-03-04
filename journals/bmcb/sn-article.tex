@@ -1,0 +1,500 @@
+%Version 3 October 2023
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove “Numbered” in the optional parenthesis.
+%%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst%
+
+%%\documentclass[sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[sn-mathphys-num]{sn-jnl}% Math and Physical Sciences Numbered Reference Style
+%%\documentclass[sn-mathphys-ay]{sn-jnl}% Math and Physical Sciences Author Year Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+%% MY PACKAGE
+\usepackage[detect-all=true]{siunitx}
+\sisetup{
+    round-mode = places,
+    round-precision = 2
+}
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\usepackage[acronym, automake, style=index, shortcuts]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+
+% define new commands
+\makeglossaries
+\newacronym{blat}{BLAT}{BLAST-like alignment tool}
+\newacronym{blast}{BLAST}{Basic Local Alignment Search Tool}
+\newacronym{cli}{CLI}{Command-Line Interface}
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{ide}{IDE}{Integrated Development Environment}
+\newacronym{gil}{GIL}{Global Interpreter Lock}
+\newacronym{ci}{CI}{Continuous Integration}
+\newacronym{cd}{CD}{Continuous Development}
+\newacronym{ucsc}{UCSC}{UCSC Genome Browser}
+\newacronym{hsp}{HSP}{High-Scoring Pair}
+\newglossaryentry{pxblat}{name=PxBLAT, description={pxblat}}
+%% MY PACKAGE
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{minted}
+
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published
+%%%%  by Springer Nature. The guidance has been prepared in partnership with
+%%%%  production teams to conform to Springer Nature technical requirements.
+%%%%  Editorial and presentation requirements differ among journal portfolios and
+%%%%  research disciplines. You may find sections in this template are irrelevant
+%%%%  to your work and are empowered to omit any such section if allowed by the
+%%%%  journal you intend to submit to. The submission guidelines and policies
+%%%%  of the journal take precedence. A detailed User Manual is available in the
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}%
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Article Title]{PxBLAT: An efficient python binding library for BLAT}
+
+%%=============================================================%%
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg}
+%%  \sfx{IV}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author[1]{\fnm{Yangyang} \sur{Li}}\email{yangyang.li@northwestern.edu}
+
+\author*[1]{\fnm{Rendong} \sur{Yang}}\email{rendong.yang@northwestern.edu}
+%\equalcont{These authors contributed equally to this work.}
+
+%\author[1,2]{\fnm{Third} \sur{Author}}\email{iiiauthor@gmail.com}
+%\equalcont{These authors contributed equally to this work.}
+
+\affil[1]{\orgdiv{Department of Urology}, \orgname{Northwestern University Feinberg School of Medicine}, \orgaddress{\street{303 E Superior St}, \city{Chicago}, \postcode{60611}, \state{IL}, \country{USA}}}
+
+%
+%\affil[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{10587}, \state{State}, \country{Country}}}
+%
+%\affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+
+%%==================================%%
+%% Sample for unstructured abstract %%
+%%==================================%%
+
+%\abstract{The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. Authors are advised to check the author instructions for the journal they are submitting to for word limits and if structural elements like subheadings, citations, or equations are permitted.}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+\abstract{\textbf{Background:} With the surge in genomic data driven by advancements in sequencing technologies, the demand for efficient bioinformatics tools for sequence analysis has become paramount. Traditional tools like BLAT, while widely used, face limitations in performance efficiency and integration with modern programming environments, particularly Python. This study introduces \gls{pxblat}, a Python-based framework designed to enhance the capabilities of BLAT, focusing on usability, computational efficiency, and seamless integration within the Python ecosystem.
+	
+	\textbf{Results:} \gls{pxblat} demonstrates significant improvements over BLAT in execution speed and data handling, as evidenced by comprehensive benchmarks conducted across various sample groups ranging from 50 to 600 samples. These experiments highlight a notable speedup in \gls{pxblat}'s performance, achieving a reduction in execution time compared to BLAT. The framework also introduces user-friendly features such as improved server management, data conversion utilities, and shell completion, enhancing the overall user experience. Additionally, the provision of extensive documentation, open-source code, and a testing dataset supports community engagement and facilitates the adoption of \gls{pxblat}.
+	
+	\textbf{Conclusions:} \gls{pxblat} stands out as a robust alternative to BLAT, offering substantial enhancements in performance and user interaction. Its development underscores the potential for modern programming languages to improve bioinformatics tools, aligning with the needs of contemporary genomic research. By providing a more efficient, user-friendly tool, \gls{pxblat} has the potential to significantly impact genomic data analysis workflows, supporting faster and more accurate sequence analysis. Future work will focus on expanding \gls{pxblat}'s capabilities and optimizing its performance, further solidifying its utility in bioinformatics.
+}
+
+\keywords{Software Libraries, Sequence Analysis, BLAT}
+
+%%\pacs[JEL Classification]{D8, H51}
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Background}\label{sec1}
+
+The rise of Python as a preferred programming language within bioinformatics is widely acknowledged as a result of its user-friendly nature, extensive libraries, and unparalleled versatility~\cite{perkel2015programming}.
+A variety of libraries have been crafted to augment Python's interface, thereby amplifying the adaptability and compatibility of bioinformatics tools~\cite{putri2022analysing, cock2009biopython}.
+For instance, Biopython~\cite{cock2009biopython}, a preeminent bioinformatics library, furnishes interfaces to tools like \gls{blast}~\cite{altschul1990basic} and Clustal~\cite{higgins1988clustal}.
+\gls{blat}, a prominent tool in bioinformatics, is renowned for its speed in genome sequence alignments and serves as a more efficient alternative to \gls{blast} for aligning DNA sequences with the reference genome~\cite{kent2002blat}.
+Furthermore, the unprecedented growth in genome sequencing technologies has significantly increased the availability of genomic data, emphasizing the need for advanced tools in both research and clinical contexts~\cite{mardis2008next,marx2023method}.
+
+However, despite its popularity and effectiveness, \gls{blat}'s integration is fraught with difficulties, primarily due to its C-based implementation and reliance on \glspl{cli}, hindering seamless integration into Python projects.
+Also, executing extensive queries with the \gls{blat} suite leads to inefficiencies, particularly when operations are isolated and not executed in batches.
+Typically, \gls{blat}'s task allocation is sporadic, intermixed with other tasks.
+Users generally face a choice: either employ standalone \gls{blat} or integrate \emph{gfServer} with \emph{gfClient}~\cite{altschul1990basic}.
+\gls{blat}'s standard operational model involves initiating \emph{gfServer}, conducting the sequence query through \emph{gfClient}, and subsequently terminating the server after each query.
+This method becomes highly inefficient for ungrouped, numerous queries as it necessitates the repeated initialization and shutdown of \emph{gfServer}, introducing significant overhead~\cite{kent2002blat}.
+An optimized approach would entail initiating \emph{gfServer} a single time and leveraging \emph{gfClient} to execute multiple queries.
+However, the command-line-only access to \emph{gfServer} and \emph{gfClient} complicates this process.
+This limitation necessitates the management of system calls (like \emph{subprocess} or \emph{os.system}), the handling of intermediate temporary files, and dealing with format conversion, all of which cumulatively degrade performance.
+
+\gls{pxblat} is proposed as a solution that allows for the programmatic use of \gls{blat}, ensuring its smooth integration into new algorithms or analytical pipelines within the Python ecosystem.
+It acts as a conduit, merging the high-performance capabilities of \gls{blat} with Python's versatility while ensuring data reproducibility.
+The primary goal of \gls{pxblat} is to bridge the gap in the current landscape by providing a Python binding library tailored specifically for \gls{blat}, addressing both the efficiency bottlenecks and the ergonomic challenges of its integration.
+
+\section{Implementation}\label{sec:implementation}
+
+The design of \gls{pxblat} is anchored in the principles of readability and simplicity, fostering an intuitive user interface that minimizes the learning curve for users.
+In our quest to streamline complexity and amplify both usability and performance, we meticulously extracted the core implementation of \gls{blat} from the broader \gls{ucsc} codebase, significantly reducing dependency overhead.
+
+We preserved the integrity of the original C codebase while reimplementing key \gls{blat} \(\left(\mathtt{V}37.1\right)\) utilities such as \emph{faTwoBit}, \emph{gfServer}, and \emph{gfClient} in C\texttt{++}.
+This strategic choice not only modernizes the code but also enhances maintainability and scalability.
+The integration of the revamped C\texttt{++} code with \gls{pxblat} was achieved using Pybind11~\cite{pybind11}, a lightweight, seamless method for interfacing C\texttt{++} and Python.
+
+This approach ensures a direct and efficient interaction with \gls{blat}'s functions, upholding the original performance benchmarks and reliability of \gls{blat}.
+Simultaneously, it extends the framework's functionality, aligning it with modern computational standards and making it a robust tool in the bioinformatics toolkit (Table~\ref{tab:apicmp}).
+
+\begin{table}[!ht]
+	\centering
+	\caption{{\bf Overview of features of \gls{pxblat} compared with \gls{blat}.}}\label{tab:apicmp}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		Feature          & \gls{pxblat} & \gls{blat} \\ \midrule
+		start server     & \cmark{}     & \cmark{}   \\
+		stop  server     & \cmark{}     & \cmark{}   \\
+		query server     & \cmark{}     & \cmark{}   \\
+		wait server      & \cmark{}     & \xmark{}   \\
+		fasta to bit     & \cmark{}     & \xmark{}   \\
+		bit to fasta     & \cmark{}     & \xmark{}   \\
+		port retry       & \cmark{}     & \xmark{}   \\
+		shell completion & \cmark{}     & \xmark{}   \\
+		\bottomrule
+	\end{tabular}
+	\footnotetext{
+		This table presents a comprehensive comparison between the features offered by \gls{pxblat} and \gls{blat}.
+		Features are denoted with a \cmark{} to signify availability and an \xmark{} to indicate absence.
+		Notably, \gls{pxblat} showcases significant enhancements, particularly in server management (e.g., wait server), data conversion (e.g., fasta to bit, bit to fasta), and enriched user interaction (e.g., shell completion).
+		These advancements firmly establish \gls{pxblat} as a superior and more versatile alternative to the conventional \gls{blat} tool.
+	}
+	%    \end{flushleft}
+\end{table}
+
+\gls{pxblat} delivers its query results in alignment with the \emph{QueryResult} class of Biopython~\cite{cock2009biopython}, enabling seamless manipulation of query outputs (Listing~\ref{listing:example}).
+This integration effectively streamlines the post-query workflow, allowing users to leverage the full potential of Biopython in their sequence alignment tasks.
+Significantly, \gls{pxblat} negates the necessity for intermediate files by conducting all operations in memory.
+This advancement eliminates the often cumbersome and time-consuming step of data format conversion, enabling users to concentrate on the core aspects of sequence alignment.
+To enhance user flexibility, the necessity for input and output files has been made optional, aligning with diverse user preferences and workflows.
+
+\begin{listing}
+   \inputminted[breaklines]{python}{example1.py}
+   \caption{{\bf \gls{api} Example.} The code snippet shows how to use the \gls{api} of \gls{pxblat},
+       and the query result can be iterated. More code examples can be found at \url{https://pxblat.readthedocs.io/en}}
+   \label{listing:example}
+\end{listing}
+
+
+Recognizing the latency and potential performance bottlenecks induced by system calls, \gls{pxblat} minimizes their usage, thereby streamlining operations and enhancing overall efficiency.
+Additionally, \gls{pxblat} simplifies server status retrieval, circumventing the complexities and potential pitfalls of log file manipulation, particularly in concurrent usage scenarios.
+To further elevate the user experience and operational efficiency, \gls{pxblat} integrates several ergonomic features.
+These include real-time server readiness checks for alignments, automatic port retries when the default is in use, and the capability to latch onto an already running server if available.
+These features collectively ensure a smoother, more efficient alignment process, reducing downtime and maximizing productivity.
+
+To facilitate a smooth user onboarding experience, we offer an extensive range of examples and comprehensive documentation (Listing~\ref{listing:example}).
+\gls{pxblat} introduces a robust set of \glspl{api}, including the classes \emph{Server} and \emph{Client}, along with a suite of functions designed to replicate the capabilities of the \gls{blat} suite.
+These classes mirror the utilities of the \gls{cli} tools \emph{gfServer} and \emph{gfClient}, respectively, but with added flexibility to accommodate a wider range of user requirements.
+Key functions such as \emph{start\_server}, \emph{query\_server}, \emph{status\_server}, \emph{fa2twobit}, and \emph{twobit2fa} are provided to cater to diverse usage scenarios.
+Rigorous testing and development protocols, incorporating \gls{ci} and \gls{cd}, have been employed to ensure high code quality and reliability.
+
+Moreover, \gls{pxblat} utilizes type annotations in its public classes and functions.
+This not only reinforces code quality and correctness through type checking and static analysis but also enhances the development experience.
+The annotated types facilitate automatic suggestion and correction of function signatures in development environments, streamlining the coding process.
+
+In addition to the \glspl{api}, \gls{pxblat} features \gls{cli} utilities crafted through its \glspl{api}, boasting shell completion for various systems to augment its versatility (Table~\ref{tab:apicmp}).
+Recognizing the diverse technological landscape, we provide the library in wheel format compatible with multiple platforms, including Linux x86-64, macOS x86-64, and macOS arm64.
+This ensures a seamless installation process, free from the complexities of C library dependencies, making it straightforward and user-friendly.
+
+
+\section{Results}\label{sec:result}
+
+\subsection{\gls{api} of \gls{pxblat}}
+
+
+
+
+
+\subsection{Performance on real datasets}
+
+The performance of \gls{pxblat} were rigorously benchmarked against \gls{blat} \(\left(\mathtt{V}37.1\right)\) utilizing eight distinct sample sets of FASTA files.
+Each set comprised a group of samples, ranging from 50 to 600 samples per set.
+The datasets are sampled from chromosome 20 of the genome of \emph{Homo sapiens} (hg38), with each sample containing a single sequence.
+These sequences varied in length from \num{1000} bp to \num{3000} bp, encompassing a spectrum of typical use-case scenarios (Fig~\ref{fig:fas_len}).
+
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{figures/fas_len_ranges}
+	\caption{{\bf Sequence length distribution in real datasets.} This figure illustrates the distribution of fasta sequence lengths across different sample sets. The \(x\) axis represents the sequence length, while the \(y\) axis denotes the count of each length.
+		a: Distribution of a set of \num{50} samples.
+		b: Distribution of a set of \num{100} samples.
+		c: Distribution of a set of \num{200} samples.
+		d: Distribution of a set of \num{300} samples.
+		e: Distribution of a set of \num{400} samples.
+		f: Distribution of a set of \num{500} samples.
+		g: Distribution of a set of \num{600} samples.
+	}
+	\label{fig:fas_len}
+\end{figure}
+
+To ascertain the accuracy and reliability of \gls{pxblat}, we conducted a comparative analysis of the \glspl{hsp} generated by both \gls{blat} and \gls{pxblat} for each sample.
+This side-by-side comparison indicated a complete alignment between the \glspl{hsp} generated by \gls{pxblat} and \gls{blat}, validating the precision of \gls{pxblat}'s results (\nameref{S2_Table}).
+
+The benchmarking process was carried out on an Apple M1 Pro running macOS 13.4.1 (arm64).
+For launching \gls{blat}, system calls were utilized, and the execution time was measured using the time library.
+Each set of FASTA files underwent three experimental runs, facilitating a comprehensive assessment of performance.
+The results highlighted efficiency of \gls{pxblat}, with observed speedups ranging from 1.00 to 1.77 times compared to the \gls{blat} execution (Fig~\ref{fig:performance}).
+
+\begin{figure}[!h]
+	\includegraphics[width=\linewidth]{figures/performance}
+	\caption{{\bf Performance comparison between \gls{blat} and \gls{pxblat}.} This figure quantifies the performance of \gls{blat} (indicated by red points) and \gls{pxblat} (indicated by blue points) across various data sets, with the \(x\) axis categorizing the number of samples in the sets and the \(y\) axis detailing the execution time in seconds.
+		Each group encapsulates the results of three independent experiments.
+		Trend lines, depicted in red for \gls{blat} and blue for \gls{pxblat}, illustrate the general performance pattern for each tool.
+		Notably, the green text highlights the speedup achieved by PxBLAT, calculated as the ratio of the execution time (\(\mathrm{time}_\textsubscript{blat} / \mathrm{time}_\textsubscript{pxblat}\)), underscoring the efficiency gains of \gls{pxblat} relative to \gls{blat}.}
+	\label{fig:performance}
+\end{figure}
+
+In summary, \gls{pxblat} demonstrates significant advantages in terms of execution time reduction and enhanced user experience.
+These findings underscore its utility as a substantial improvement over the \gls{blat}, reinforcing its value within the bioinformatics toolkit.
+
+
+
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.9\textwidth]{fig.eps}
+%\caption{This is a widefig. This is an example of long caption this is an example of long caption  this is an example of long caption this is an example of long caption}\label{fig1}
+%\end{figure}
+%
+%In case of double column layout, the above format puts figure captions/images to single column width. To get spanned images, we need to provide \verb+\begin{figure*}+ \verb+...+ \verb+\end{figure*}+.
+%
+%For sample purpose, we have included the width of images in the optional argument of \verb+\includegraphics+ tag. Please ignore this.
+%
+%\section{Algorithms, Program codes and Listings}\label{sec7}
+%
+%Packages \verb+algorithm+, \verb+algorithmicx+ and \verb+algpseudocode+ are used for setting algorithms in \LaTeX\ using the format:
+
+%%=============================================%%
+%% For presentation purpose, we have included  %%
+%% \bigskip command. Please ignore this.       %%
+%%=============================================%%
+%\bigskip
+%\begin{verbatim}
+%\begin{algorithm}
+%\caption{<alg-caption>}\label{<alg-label>}
+%\begin{algorithmic}[1]
+%. . .
+%\end{algorithmic}
+%\end{algorithm}
+%\end{verbatim}
+%\bigskip
+%%=============================================%%
+%% For presentation purpose, we have included  %%
+%% \bigskip command. Please ignore this.       %%
+%%=============================================%%
+%
+%You may refer above listed package documentations for more details before setting \verb+algorithm+ environment. For program codes, the ``verbatim'' package is required and the command to be used is \verb+\begin{verbatim}+ \verb+...+ \verb+\end{verbatim}+.
+%
+%Similarly, for \verb+listings+, use the \verb+listings+ package. \verb+\begin{lstlisting}+ \verb+...+ \verb+\end{lstlisting}+ is used to set environments similar to \verb+verbatim+ environment. Refer to the \verb+lstlisting+ package documentation for more details.
+%
+
+%\section{Cross referencing}\label{sec8}
+%
+%Environments such as figure, table, equation and align can have a label
+%declared via the \verb+\label{#label}+ command. For figures and table
+%environments use the \verb+\label{}+ command inside or just
+%below the \verb+\caption{}+ command. You can then use the
+%\verb+\ref{#label}+ command to cross-reference them. As an example, consider
+%the label declared for Figure~\ref{fig1} which is
+%\verb+\label{fig1}+. To cross-reference it, use the command
+%\verb+Figure \ref{fig1}+, for which it comes up as
+%``Figure~\ref{fig1}''.
+%
+%To reference line numbers in an algorithm, consider the label declared for the line number 2 of Algorithm~\ref{algo1} is \verb+\label{algln2}+. To cross-reference it, use the command \verb+\ref{algln2}+ for which it comes up as line~\ref{algln2} of Algorithm~\ref{algo1}.
+%
+%\subsection{Details on reference citations}\label{subsec7}
+%
+%Standard \LaTeX\ permits only numerical citations. To support both numerical and author-year citations this template uses \verb+natbib+ \LaTeX\ package. For style guidance please refer to the template user manual.
+%
+%Here is an example for \verb+\cite{...}+: \cite{bib1}. Another example for \verb+\citep{...}+: \citep{bib2}. For author-year citation mode, \verb+\cite{...}+ prints Jones et al. (1990) and \verb+\citep{...}+ prints (Jones et al., 1990).
+%
+%All cited bib entries are printed at the end of this article: \cite{bib3}, \cite{bib4}, \cite{bib5}, \cite{bib6}, \cite{bib7}, \cite{bib8}, \cite{bib9}, \cite{bib10}, \cite{bib11}, \cite{bib12} and \cite{bib13}.
+
+
+% \section{Discussion}\label{sec12}
+% Discussions should be brief and focused. In some disciplines use of Discussion or `Conclusion' is interchangeable. It is not mandatory to use both. Some journals prefer a section `Results and Discussion' followed by a section `Conclusion'. Please refer to Journal-level guidance for any specific requirements.
+
+\section{Conclusion}\label{sec13}
+
+Conclusions may be used to restate your hypothesis or research question, restate your major findings, explain the relevance and the added value of your work, highlight any limitations of your study, describe future directions for research and recommendations.
+
+In some disciplines use of Discussion or 'Conclusion' is interchangeable. It is not mandatory to use both. Please refer to Journal-level guidance for any specific requirements.
+
+
+\section{Availability and requirements}
+\textbf{Project name}: \gls{pxblat}  \newline
+\textbf{Project home page}: \url{https://github.com/ylab-hi/pxblat} \newline
+\textbf{Operating system(s)}: Linux, Mac OS X  \newline
+\textbf{Programming language}: C, C\texttt{++}, Python  \newline
+\textbf{Other requirements}: The source code and executables are freely available for academic, nonprofit and personal use. Commercial licensing information is available on the Kent Informatics website (\url{http://www.kentinformatics.com}).  \newline
+\textbf{Any restrictions to use by non-academics}: licence needed
+
+\backmatter
+\bmhead{Supplementary information}
+
+If your article has accompanying supplementary file/s please state so here.
+
+Authors reporting data from electrophoretic gels and blots should supply the full unprocessed scans for key as part of their Supplementary information. This may be requested by the editorial team/s if it is missing.
+
+Please refer to Journal-level guidance for any specific requirements.
+
+\bmhead{Acknowledgements}
+
+Special thanks to the team who maintain the \gls{ucsc} codebase and users from the bioinformatics community whose valuable feedback and suggestions were pivotal in refining \gls{pxblat}'s design and functionality.
+
+% \section*{Declarations}
+
+% Some journals require declarations to be submitted in a standardised format.
+% Please check the Instructions for Authors of the journal to which you are submitting to see if you need to complete this section.
+% If yes, your manuscript must contain the following sections under the heading `Declarations':
+
+\bmhead{Funding}
+This work was supported by the National Institute of General Medical
+Sciences [R35GM142441].
+
+\bmhead{Code availability}
+The \gls{pxblat}, along with the source code, is publicly available in the GitHub repository at \url{https://github.com/ylab-hi/pxblat}.
+The documentation is available at ReadtheDocs \url{https://pxblat.readthedocs.io/en/latest/}.
+The script for benchmarking is available at \emph{tests/test\_result.py} in the repository.
+The testing dataset is available at the GitHub repository {\url{https://github.com/ylab-hi/pxblat}.
+The path of the testing dataset is \emph{benchmark/fas}.
+
+\bmhead{Competing interests}
+No competing interest is declared.
+
+
+% \begin{itemize}
+% 	\item Funding
+% 	\item Conflict of interest/Competing interests (check journal-specific guidelines for which heading to use)
+% 	\item Ethics approval and consent to participate
+% 	\item Consent for publication
+% 	\item Data availability
+% 	\item Materials availability
+% 	\item Code availability
+% 	\item Author contribution
+% \end{itemize}
+
+% \noindent
+% If any of the sections are not relevant to your manuscript, please include the heading and write `Not applicable' for that section.
+
+%%===================================================%%
+%% For presentation purpose, we have included        %%
+%% \bigskip command. Please ignore this.             %%
+%%===================================================%%
+% \bigskip
+% \begin{flushleft}%
+% 	Editorial Policies for:
+%
+% 	\bigskip\noindent
+% 	Springer journals and proceedings: \url{https://www.springer.com/gp/editorial-policies}
+%
+% 	\bigskip\noindent
+% 	Nature Portfolio journals: \url{https://www.nature.com/nature-research/editorial-policies}
+%
+% 	\bigskip\noindent
+% 	\textit{Scientific Reports}: \url{https://www.nature.com/srep/journal-policies/editorial-policies}
+%
+% 	\bigskip\noindent
+% 	BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies}
+% \end{flushleft}
+
+\begin{appendices}
+
+	\printglossary[type=\acronymtype]
+	
+	% \section{Section title of first appendix}\label{secA1}
+	% 
+	% An appendix contains supplementary information that is not an essential part of the text itself but which may be helpful in providing a more comprehensive understanding of the research problem or it is information that is too cumbersome to be included in the body of the paper.
+	% 
+	%%=============================================%%
+	%% For submissions to Nature Portfolio Journals %%
+	%% please use the heading ``Extended Data''.   %%
+	%%=============================================%%
+	
+	%%=============================================================%%
+	%% Sample for another appendix section			       %%
+	%%=============================================================%%
+	
+	%% \section{Example of another appendix section}\label{secA2}%
+	%% Appendices may be used for helpful, supporting or essential material that would otherwise
+	%% clutter, break up or be distracting to the text. Appendices can consist of sections, figures,
+	%% tables and equations etc.
+	
+\end{appendices}
+
+%%===========================================================================================%%
+%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
+%% system, please include the references within the manuscript file itself. You may do this  %%
+%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
+%% file, and delete the associated \verb+\bibliography+ commands.                            %%
+%%===========================================================================================%%
+
+\bibliography{ref}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+
+\end{document}
